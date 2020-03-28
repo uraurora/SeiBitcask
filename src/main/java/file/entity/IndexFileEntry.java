@@ -1,19 +1,32 @@
 package file.entity;
 
-public class indexFileEntry {
-
+/**
+ * @author sei
+ * @description 内存中存储的IndexMap类的值类型，建造者模式
+ * @date 17:13 2020/3/28
+ */
+public class IndexFileEntry {
+    /**
+     * 时间戳
+     */
     private final long tstamp;
-
-    private final long fileId;
-
+    /**
+     * 键对应的BucketId
+     */
+    private final long bucketId;
+    /**
+     * 值的大小
+     */
     private final long valueSize;
-
+    /**
+     * 文件偏移量
+     */
     private final long offset;
 
 
-    private indexFileEntry(indexFileEntryBuilder builder){
+    private IndexFileEntry(indexFileEntryBuilder builder){
         tstamp = builder.tstamp;
-        fileId = builder.fileId;
+        bucketId = builder.bucketId;
         valueSize = builder.valueSize;
         offset = builder.offset;
     }
@@ -21,7 +34,7 @@ public class indexFileEntry {
     public static class indexFileEntryBuilder{
         private long tstamp;
 
-        private long fileId;
+        private long bucketId;
 
         private long valueSize;
 
@@ -32,8 +45,8 @@ public class indexFileEntry {
             return this;
         }
 
-        public indexFileEntryBuilder setFileId(long fileId) {
-            this.fileId = fileId;
+        public indexFileEntryBuilder setBucketId(long bucketId) {
+            this.bucketId = bucketId;
             return this;
         }
 
@@ -47,8 +60,8 @@ public class indexFileEntry {
             return this;
         }
 
-        public indexFileEntry build(){
-            return new indexFileEntry(this);
+        public IndexFileEntry build(){
+            return new IndexFileEntry(this);
         }
     }
 

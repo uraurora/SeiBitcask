@@ -3,19 +3,34 @@ package file.entity;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
-public class LogFileEntry {
-
+/**
+ * @author sei
+ * @description Bucket存储的条目实体类，建造者模式
+ * @date 17:13 2020/3/28
+ */
+public class BucketEntry {
+    /**
+     * 时间戳
+     */
     private final long tstamp;
-
+    /**
+     * 键大小
+     */
     private final int keySize;
-
+    /**
+     * 值大小
+     */
     private final int valueSize;
-
+    /**
+     * 键
+     */
     private final byte[] key;
-
+    /**
+     * 值
+     */
     private final byte[] value;
 
-    private LogFileEntry(LogFileEntryBuilder builder){
+    private BucketEntry(BucketEntryBuilder builder){
         tstamp = builder.tstamp;
         keySize = builder.keySize;
         valueSize = builder.valueSize;
@@ -23,7 +38,7 @@ public class LogFileEntry {
         value = builder.value;
     }
 
-    public static class LogFileEntryBuilder{
+    public static class BucketEntryBuilder {
         private final long tstamp;
 
         private int keySize;
@@ -34,29 +49,29 @@ public class LogFileEntry {
 
         private byte[] value;
 
-        public LogFileEntryBuilder(){
+        public BucketEntryBuilder(){
             tstamp = LocalDateTime.now().toEpochSecond(ZoneOffset.of("+8"));
         }
 
-        public LogFileEntryBuilder setKey(byte[] key) {
+        public BucketEntryBuilder setKey(byte[] key) {
             this.key = key;
             this.keySize = key.length;
             return this;
         }
 
-        public LogFileEntryBuilder setValue(byte[] value) {
+        public BucketEntryBuilder setValue(byte[] value) {
             this.value = value;
             this.valueSize = value.length;
             return this;
         }
 
-        public LogFileEntry build(){
-            return new LogFileEntry(this);
+        public BucketEntry build(){
+            return new BucketEntry(this);
         }
     }
 
-    public static LogFileEntryBuilder builder(){
-        return new LogFileEntryBuilder();
+    public static BucketEntryBuilder builder(){
+        return new BucketEntryBuilder();
     }
 
 }

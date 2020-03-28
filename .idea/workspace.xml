@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89d9ced8-492c-4467-a919-d6b98f8317b7" name="Default Changelist" comment="" />
+    <list default="true" id="89d9ced8-492c-4467-a919-d6b98f8317b7" name="Default Changelist" comment="添加全局索引map和Bucket管理者">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/constant/EntrySizeEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/constant/FileSuffixEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/file/manager/BucketManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/file/manager/IndexMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/db/Bitcask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/db/Bitcask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/db/BitcaskBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/db/BitcaskBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/file/entity/LogFileEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/entity/BucketEntry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/file/entity/indexFileEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/entity/IndexFileEntry.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -11,24 +23,30 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1ZfA8MLFaZNx88qGp0mNIxIjxwH" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../crescent" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../GuavaTest" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.build" />
+    <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -45,28 +63,54 @@
       <workItem from="1585223304250" duration="1976000" />
       <workItem from="1585291642072" duration="11794000" />
       <workItem from="1585314405037" duration="4000" />
+      <workItem from="1585314421611" duration="485000" />
+      <workItem from="1585380319161" duration="11406000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="添加全局索引map和Bucket管理者" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加全局索引map和Bucket管理者" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser" timestamp="1585303169044">
+    <state x="676" y="373" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1585386590209">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1585303169044" />
+    <state x="676" y="373" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585386590209" />
+    <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser" timestamp="1585391443328">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1585391443328" />
     <state x="670" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1585301385987">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="670" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585301385987" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1585301052832">
+    <state x="545" y="114" key="CommitChangelistDialog2" timestamp="1585395622601">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585301052832" />
-    <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1585314402553">
+    <state x="545" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1585395622601" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1585390155444">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="640" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585314402553" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585390155444" />
+    <state x="461" y="162" key="SettingsEditor" timestamp="1585387888987">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585387888987" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1585395615783">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585395615783" />
+    <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1585384232574">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="640" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585384232574" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585393316034">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585393316034" />
   </component>
 </project>
