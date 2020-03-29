@@ -41,7 +41,7 @@ public class BucketEntry {
     }
 
     public static class BucketEntryBuilder {
-        private final long tstamp;
+        private long tstamp;
 
         private int keySize;
 
@@ -51,9 +51,7 @@ public class BucketEntry {
 
         private byte[] value;
 
-        public BucketEntryBuilder(){
-            tstamp = LocalDateTime.now().toEpochSecond(ZoneOffset.of("+8"));
-        }
+        public BucketEntryBuilder(){}
 
         public BucketEntryBuilder setKey(byte[] key) {
             this.key = key;
@@ -64,6 +62,11 @@ public class BucketEntry {
         public BucketEntryBuilder setValue(byte[] value) {
             this.value = value;
             this.valueSize = value.length;
+            return this;
+        }
+
+        public BucketEntryBuilder setTstamp(long tstamp) {
+            this.tstamp = tstamp;
             return this;
         }
 

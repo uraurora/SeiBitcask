@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 public class ConvertUtilTest {
 
     final static int num = 129;
-    final static long longNum = 100000;
+    final static long longNum = 100000L;
 
     @Test
     public void int2Bytes() {
@@ -43,5 +43,16 @@ public class ConvertUtilTest {
     public void bytes2Long() {
         long bytes2int = ConvertUtil.bytes2Long(new byte[]{0, 0, 0, 0, 0, 1, -122, -96});
         assertEquals(bytes2int, 100000);
+    }
+
+    @Test
+    public void t(){
+        assertEquals(16 - 1<<3, 120);
+        assertEquals(16 - (1<<3), 8);
+
+        for (long i = 0; i < 10000000L; i++) {
+            assertEquals(ConvertUtil.bytes2Long(ConvertUtil.long2Bytes(i)), i);
+        }
+
     }
 }

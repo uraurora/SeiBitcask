@@ -1,6 +1,7 @@
 package file.manager;
 
 import core.db.BitcaskBuilder;
+import file.entity.IndexEntry;
 
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -11,9 +12,9 @@ import java.util.concurrent.ConcurrentMap;
  * @description 内存中的文件索引管理类(因为管理了单机所有Bitcask实例的索引，务必简洁实现)
  * @date 17:26 2020/3/28
  */
-public class IndexMap<K, V> {
-    // TODO: 避免原型使用
-    private final ConcurrentMap<K, V> map;
+public class IndexMap {
+
+    private final ConcurrentMap<String, IndexEntry> map;
 
     //<editor-fold desc="单例模式">
     private IndexMap(){this.map = new ConcurrentHashMap<>();}
@@ -27,15 +28,15 @@ public class IndexMap<K, V> {
     }
     //</editor-fold>
 
-    public boolean isExisted(K key){
+    public boolean isExisted(String key){
         return map.containsKey(key);
     }
 
-    public void put(K key, V val){
+    public void put(String key, IndexEntry val){
         map.put(key, val);
     }
 
-    public void remove(K key){
+    public void remove(String key){
         map.remove(key);
     }
 

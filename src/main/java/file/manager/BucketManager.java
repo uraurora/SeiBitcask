@@ -24,6 +24,7 @@ public class BucketManager {
         return new BucketManager();
     }
 
+    //<editor-fold desc="Operations">
     /**
      * 将bucketEntry序列化好的对象写入Bucket文件
      * @param entry 序列化好的对象
@@ -40,6 +41,15 @@ public class BucketManager {
         return null;
     }
 
+    public void setActiveBucketId(int id){
+
+    }
+    //</editor-fold>
+
+
+
+
+    //<editor-fold desc="Static Query Methods">
     public static int getActiveBucketId(){
         return 0;
     }
@@ -52,6 +62,7 @@ public class BucketManager {
     public static long getSize(int bucketId){
         return 0L;
     }
+    //</editor-fold>
 
 
 }

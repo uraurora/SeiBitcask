@@ -1,8 +1,15 @@
 package core.db;
 
+import cache.BufferPool;
+import file.entity.BucketEntry;
 import file.entity.IndexEntry;
 import file.manager.BucketManager;
 import file.manager.IndexMap;
+import util.SerializeUtil;
+
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.util.Objects;
 
 /**
  * @author sei
@@ -24,14 +31,31 @@ public class Bitcask implements IBitcask {
      * 1、序列化key和value，并生成bucketEntry
      * 2、调用BucketManager的write方法写入缓存区
      * 3、更新IndexMap的对应的键值
-     *
      * @param key 键
      * @param value 值
      * @return 是否成功
      */
     @Override
     public boolean put(String key, Object value) {
+        // serialize the key and val, generate bucketEntry
+        long tstamp = LocalDateTime.now().toEpochSecond(ZoneOffset.of("+8"));
+        BucketEntry bucketEntry = BucketEntry.builder()
+                .setTstamp(tstamp)
+                .setKey(SerializeUtil.serialize(Objects.requireNonNull(key)))
+                .setValue(SerializeUtil.serialize(Objects.requireNonNull(value)))
+                .build();
 
+        // write the entry to buffer/file
+        bucketManager.writeBucket(bucketEntry);
+
+        // update the indexMap
+        IndexEntry indexEntry = IndexEntry.builder()
+                .setTstamp(tstamp)
+                .setBucketId(BufferPool.getActiveBucketId())
+                //.setOffset()        // TODO: 获取该条目在文件的偏移量
+                .setValueSize(bucketEntry.getValueSize())
+                .build();
+        indexMap.put(key, indexEntry);
         return true;
     }
 
