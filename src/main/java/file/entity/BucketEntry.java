@@ -1,5 +1,7 @@
 package file.entity;
 
+import util.ConvertUtil;
+
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
@@ -74,4 +76,51 @@ public class BucketEntry {
         return new BucketEntryBuilder();
     }
 
+    public long getTstamp() {
+        return tstamp;
+    }
+
+    public int getKeySize() {
+        return keySize;
+    }
+
+    public int getValueSize() {
+        return valueSize;
+    }
+
+    public byte[] getKey() {
+        return key;
+    }
+
+    public byte[] getValue() {
+        return value;
+    }
+
+    public int size(){
+        return 8 + 4 + 4 + this.getKeySize() + this.getValueSize();
+    }
+
+    public byte[] toBytes(){
+        byte[] result = new byte[size()];
+        int copyOffset = 0;
+
+        byte[] tstampBytes = ConvertUtil.long2Bytes(tstamp);
+        System.arraycopy(tstampBytes, 0, result, copyOffset, 8);
+        copyOffset += 8;
+
+        byte[] keySizeBytes = ConvertUtil.int2Bytes(keySize);
+        System.arraycopy(keySizeBytes, 0, result, copyOffset, 4);
+        copyOffset += 4;
+
+        byte[] valueSizeBytes = ConvertUtil.int2Bytes(valueSize);
+        System.arraycopy(valueSizeBytes, 0, result, copyOffset, 4);
+        copyOffset += 4;
+
+        System.arraycopy(key, 0, result, copyOffset, keySize);
+        copyOffset += keySize;
+
+        System.arraycopy(value, 0, result, copyOffset, valueSize);
+
+        return result;
+    }
 }
