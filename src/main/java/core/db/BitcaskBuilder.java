@@ -2,6 +2,7 @@ package core.db;
 
 import file.manager.BucketManager;
 import file.manager.IndexMap;
+import file.serialize.BucketSerializeCategory;
 
 /**
  * @author sei
@@ -23,10 +24,10 @@ public class BitcaskBuilder {
     //</editor-fold>
 
     public static Bitcask newBitcask(){
-        return new Bitcask(BucketManager.newInstance(), IndexMap.getInstance());
+        return new Bitcask(BucketManager.newInstance(), IndexMap.getInstance(), BucketSerializeCategory.BYTES);
     }
 
     public static Bitcask newBitcask(BucketManager bucketManager){
-        return new Bitcask(bucketManager, IndexMap.getInstance());
+        return new Bitcask(bucketManager, IndexMap.getInstance(), BucketSerializeCategory.BYTES);
     }
 }

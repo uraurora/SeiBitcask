@@ -5,11 +5,13 @@ import file.entity.BucketEntry;
 import file.entity.IndexEntry;
 import file.manager.BucketManager;
 import file.manager.IndexMap;
+import file.serialize.BucketSerializeCategory;
 import util.SerializeUtil;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * @author sei
@@ -22,9 +24,12 @@ public class Bitcask implements IBitcask {
 
     private final IndexMap indexMap;
 
-    public Bitcask(BucketManager bucketManager, IndexMap indexMap) {
+    private final BucketSerializeCategory category;
+
+    public Bitcask(BucketManager bucketManager, IndexMap indexMap, BucketSerializeCategory category) {
         this.bucketManager = bucketManager;
         this.indexMap = indexMap;
+        this.category = category;
     }
 
     /**
@@ -41,11 +46,12 @@ public class Bitcask implements IBitcask {
         long tstamp = LocalDateTime.now().toEpochSecond(ZoneOffset.of("+8"));
         BucketEntry bucketEntry = BucketEntry.builder()
                 .setTstamp(tstamp)
-                .setKey(SerializeUtil.serialize(Objects.requireNonNull(key)))
-                .setValue(SerializeUtil.serialize(Objects.requireNonNull(value)))
+                .setKey(category.serialize(Objects.requireNonNull(key)))
+                .setValue(category.serialize(Objects.requireNonNull(value)))
                 .build();
 
         // write the entry to buffer/file
+        // TODO: mind thread safe
         bucketManager.writeBucket(bucketEntry);
 
         // update the indexMap
@@ -71,6 +77,17 @@ public class Bitcask implements IBitcask {
         return true;
     }
 
+
+    @Override
+    public Optional<Object> get(String key) {
+        return Optional.ofNullable(getObject(key));
+    }
+
+    @Override
+    public <T> T get(String key, Class<T> clazz) {
+        return clazz.cast(getObject(key));
+    }
+
     /**
      * 1、在IndexMap中查找键是否存在，不存在返回信息
      * 2、存在的话得到IndexEntry，判断bucketId为active bucketId，是的话从缓存区中查找，
@@ -79,9 +96,15 @@ public class Bitcask implements IBitcask {
      * @param key 查询的键
      * @return 查询结果
      */
-    @Override
-    public Object get(String key) {
-
-        return null;
+    private Object getObject(String key){
+        Object res = null;
+        if(indexMap.isExisted(key)){
+            IndexEntry indexEntry = indexMap.get(key);
+            // read from buffer, aim to find the val
+            //  TODO: BufferPool and ThreadSafe
+            res = category.deserialize(bucketManager.readBucket(indexEntry));
+        }
+        return res;
     }
+
 }

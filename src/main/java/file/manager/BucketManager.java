@@ -37,7 +37,7 @@ public class BucketManager {
      * @param indexEntry 索引文件条目，内部包含要找的对象的位置信息
      * @return 所查找的依据某种序列化的对象
      */
-    public BucketEntry readBucket(IndexEntry indexEntry){
+    public byte[] readBucket(IndexEntry indexEntry){
         return null;
     }
 

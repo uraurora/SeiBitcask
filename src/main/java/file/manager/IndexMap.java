@@ -40,4 +40,8 @@ public class IndexMap {
         map.remove(key);
     }
 
+    public IndexEntry get(String key){
+        return map.get(key);
+    }
+
 }
