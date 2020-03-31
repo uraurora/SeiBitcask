@@ -4,18 +4,24 @@ package core.constant;
  * @description 持久化文件的后缀
  * @date 18:31 2020/3/28
  */
-public enum FileSuffixEnum {
+public enum FileConstEnum {
 
-    BUCKET(".bucket"),
+    BUCKET_SUFFIX(".bucket"),
 
-    INDEX(".index"),
+    INDEX_SUFFIX(".index"),
 
-    HINT(".hint"),
+    HINT_SUFFIX(".hint"),
+
+    BUCKET_PREFIX("bucket"),
+
+    INDEX_PREFIX("index"),
+
+    HINT_PREFIX("hint"),
     ;
 
     private final String val;
 
-    FileSuffixEnum(String val) {
+    FileConstEnum(String val) {
         this.val = val;
     }
 

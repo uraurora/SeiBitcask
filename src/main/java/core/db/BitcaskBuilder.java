@@ -2,7 +2,7 @@ package core.db;
 
 import file.manager.BucketManager;
 import file.manager.IndexMap;
-import file.serialize.BucketSerializeCategory;
+import core.constant.BucketSerializeCategory;
 
 /**
  * @author sei

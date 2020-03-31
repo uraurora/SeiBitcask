@@ -1,4 +1,4 @@
-package file.serialize;
+package core.constant;
 
 import com.sun.istack.internal.NotNull;
 

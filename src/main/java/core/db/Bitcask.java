@@ -5,8 +5,7 @@ import file.entity.BucketEntry;
 import file.entity.IndexEntry;
 import file.manager.BucketManager;
 import file.manager.IndexMap;
-import file.serialize.BucketSerializeCategory;
-import util.SerializeUtil;
+import core.constant.BucketSerializeCategory;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -57,7 +56,7 @@ public class Bitcask implements IBitcask {
         // update the indexMap
         IndexEntry indexEntry = IndexEntry.builder()
                 .setTstamp(tstamp)
-                .setBucketId(BufferPool.getActiveBucketId())
+                // .setBucketId(BufferPool.getInstance().getActiveBucketId())
                 //.setOffset()        // TODO: 获取该条目在文件的偏移量
                 .setValueSize(bucketEntry.getValueSize())
                 .build();
