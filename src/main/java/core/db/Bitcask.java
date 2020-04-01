@@ -1,6 +1,5 @@
 package core.db;
 
-import cache.BufferPool;
 import file.entity.BucketEntry;
 import file.entity.IndexEntry;
 import file.manager.BucketManager;

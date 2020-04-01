@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89d9ced8-492c-4467-a919-d6b98f8317b7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/cache/BucketBuffer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/cache/SimpleBuffer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/constant/FileCategory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/FileUtil.java" afterDir="false" />
+    <list default="true" id="89d9ced8-492c-4467-a919-d6b98f8317b7" name="Default Changelist" comment="优化buffer，增加bucket读写的逻辑">
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/constant/StaticVar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/file/cache/BucketBuffer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/file/cache/BufferPool.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cache/BufferPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cache/BufferPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/constant/FileSuffixEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/constant/FileConstEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cache/BucketBuffer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cache/BufferPool.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cache/SimpleBuffer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/constant/EntrySizeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/constant/EntrySizeEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/constant/FileConstEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/constant/FileConstEnum.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/db/Bitcask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/db/Bitcask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/db/BitcaskBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/db/BitcaskBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/file/serialize/BucketSerializeCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/constant/BucketSerializeCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/BufferUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/cache/BufferPoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cache/BufferPoolTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/file/manager/BucketManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/manager/BucketManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/FileUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/cache/BufferPoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/file/cache/BufferPoolTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,12 +68,12 @@
       <module name="plainKVDB" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cache.*" />
+          <option name="PATTERN" value="file.cache.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cache" />
-      <option name="MAIN_CLASS_NAME" value="cache.BufferPoolTest" />
+      <option name="PACKAGE_NAME" value="file.cache" />
+      <option name="MAIN_CLASS_NAME" value="file.cache.BufferPoolTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -82,12 +83,12 @@
       <module name="plainKVDB" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cache.*" />
+          <option name="PATTERN" value="file.cache.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cache" />
-      <option name="MAIN_CLASS_NAME" value="cache.BufferPoolTest" />
+      <option name="PACKAGE_NAME" value="file.cache" />
+      <option name="MAIN_CLASS_NAME" value="file.cache.BufferPoolTest" />
       <option name="METHOD_NAME" value="append" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -98,12 +99,12 @@
       <module name="plainKVDB" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cache.*" />
+          <option name="PATTERN" value="file.cache.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cache" />
-      <option name="MAIN_CLASS_NAME" value="cache.BufferPoolTest" />
+      <option name="PACKAGE_NAME" value="file.cache" />
+      <option name="MAIN_CLASS_NAME" value="file.cache.BufferPoolTest" />
       <option name="METHOD_NAME" value="append2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -114,12 +115,12 @@
       <module name="plainKVDB" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cache.*" />
+          <option name="PATTERN" value="file.cache.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cache" />
-      <option name="MAIN_CLASS_NAME" value="cache.BufferPoolTest" />
+      <option name="PACKAGE_NAME" value="file.cache" />
+      <option name="MAIN_CLASS_NAME" value="file.cache.BufferPoolTest" />
       <option name="METHOD_NAME" value="fileTest" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -130,12 +131,12 @@
       <module name="plainKVDB" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="cache.*" />
+          <option name="PATTERN" value="file.cache.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="cache" />
-      <option name="MAIN_CLASS_NAME" value="cache.BufferPoolTest" />
+      <option name="PACKAGE_NAME" value="file.cache" />
+      <option name="MAIN_CLASS_NAME" value="file.cache.BufferPoolTest" />
       <option name="METHOD_NAME" value="getActiveBucketId" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
@@ -172,7 +173,9 @@
       <workItem from="1585451757959" duration="9000" />
       <workItem from="1585451778648" duration="25638000" />
       <workItem from="1585540855237" duration="10259000" />
-      <workItem from="1585637549603" duration="8988000" />
+      <workItem from="1585637549603" duration="9082000" />
+      <workItem from="1585653652554" duration="3018000" />
+      <workItem from="1585712158417" duration="22802000" />
     </task>
     <task id="LOCAL-00001" summary="添加全局索引map和Bucket管理者">
       <created>1585395635039</created>
@@ -202,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585579246410</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="增加文件工具类，mmap方式构思中">
+      <created>1585650562537</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1585650562537</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -213,7 +223,9 @@
     <MESSAGE value="添加逻辑，以byte数组方式写入持久化文件，增加bucketEntry到bytes的转换" />
     <MESSAGE value="daily push" />
     <MESSAGE value="daily push-2020.03.30" />
-    <option name="LAST_COMMIT_MESSAGE" value="daily push-2020.03.30" />
+    <MESSAGE value="增加文件工具类，mmap方式构思中" />
+    <MESSAGE value="优化buffer，增加bucket读写的逻辑" />
+    <option name="LAST_COMMIT_MESSAGE" value="优化buffer，增加bucket读写的逻辑" />
   </component>
   <component name="WindowStateProjectService">
     <state x="676" y="373" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1585386590209">
@@ -224,38 +236,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1585650322305" />
-    <state x="670" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1585301385987">
+    <state x="670" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1585656408950">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="670" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585301385987" />
+    <state x="670" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585656408950" />
     <state x="739" y="378" width="441" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1585477308213">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="739" y="378" width="441" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1585477308213" />
-    <state x="545" y="114" key="CommitChangelistDialog2" timestamp="1585650551631">
+    <state x="545" y="114" key="CommitChangelistDialog2" timestamp="1585747647702">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="545" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1585650551631" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1585566696648">
+    <state x="545" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1585747647702" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1585655761049">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585566696648" />
-    <state width="1877" height="58" key="GridCell.Tab.0.bottom" timestamp="1585650551671">
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585655761049" />
+    <state width="1877" height="58" key="GridCell.Tab.0.bottom" timestamp="1585650604530">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="58" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585650551671" />
-    <state width="1877" height="58" key="GridCell.Tab.0.center" timestamp="1585650551671">
+    <state width="1877" height="58" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585650604530" />
+    <state width="1877" height="58" key="GridCell.Tab.0.center" timestamp="1585650604530">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="58" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585650551671" />
-    <state width="1877" height="58" key="GridCell.Tab.0.left" timestamp="1585650551671">
+    <state width="1877" height="58" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585650604530" />
+    <state width="1877" height="58" key="GridCell.Tab.0.left" timestamp="1585650604530">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="58" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585650551671" />
-    <state width="1877" height="58" key="GridCell.Tab.0.right" timestamp="1585650551671">
+    <state width="1877" height="58" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585650604530" />
+    <state width="1877" height="58" key="GridCell.Tab.0.right" timestamp="1585650604530">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="58" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585650551671" />
+    <state width="1877" height="58" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585650604530" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1585490904185">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -280,10 +292,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1585565797955" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1585579256980">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1585650583544">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585579256980" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585650583544" />
     <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1585451787604">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -296,13 +308,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="273" key="extract.method.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585483723569" />
+    <state x="675" y="311" key="git4idea.merge.GitPullDialog" timestamp="1585650574015">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="675" y="311" key="git4idea.merge.GitPullDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585650574015" />
     <state x="661" y="137" key="refactoring.ChangeSignatureDialog" timestamp="1585645776635">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="661" y="137" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585645776635" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585484089973">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585746795812">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585484089973" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585746795812" />
   </component>
 </project>

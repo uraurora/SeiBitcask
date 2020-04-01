@@ -1,14 +1,11 @@
-package cache;
+package file.cache;
 
 import core.constant.FileCategory;
 import org.junit.Test;
-import util.ConvertUtil;
 import util.FileUtil;
 
 import java.io.*;
 import java.util.Arrays;
-
-import static org.junit.Assert.*;
 
 public class BufferPoolTest {
 

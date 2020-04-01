@@ -6,17 +6,13 @@ package core.constant;
  */
 public enum FileConstEnum {
 
-    BUCKET_SUFFIX(".bucket"),
-
-    INDEX_SUFFIX(".index"),
-
-    HINT_SUFFIX(".hint"),
-
     BUCKET_PREFIX("bucket"),
 
     INDEX_PREFIX("index"),
 
     HINT_PREFIX("hint"),
+
+    DATA_SUFFIX(".dat")
     ;
 
     private final String val;

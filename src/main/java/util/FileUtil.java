@@ -1,6 +1,8 @@
 package util;
 
 import core.constant.FileCategory;
+import core.constant.FileConstEnum;
+import core.constant.StaticVar;
 
 import java.io.*;
 
@@ -71,4 +73,16 @@ public final class FileUtil {
         }
     }
     //</editor-fold>
+
+    public static File getFile(int id, FileConstEnum type){
+        return new File(fileName(id, type));
+    }
+
+    public static File getSimpleBufferFile(){
+        return new File(StaticVar.FILE_DIR+StaticVar.CACHE_FILE_NAME);
+    }
+
+    private static String fileName(int id, FileConstEnum type){
+        return type.getVal() + id + FileConstEnum.DATA_SUFFIX.getVal();
+    }
 }
