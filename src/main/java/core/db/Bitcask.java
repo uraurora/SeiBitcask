@@ -44,7 +44,7 @@ public class Bitcask implements IBitcask {
         long tstamp = LocalDateTime.now().toEpochSecond(ZoneOffset.of("+8"));
         BucketEntry bucketEntry = BucketEntry.builder()
                 .setTstamp(tstamp)
-                .setKey(category.serialize(Objects.requireNonNull(key)))
+                .setKey(category.serialize(Objects.requireNonNull(key)))     // TODO:check
                 .setValue(category.serialize(Objects.requireNonNull(value)))
                 .build();
 
@@ -53,10 +53,11 @@ public class Bitcask implements IBitcask {
         bucketManager.writeBucket(bucketEntry);
 
         // update the indexMap
+        int id = bucketManager.getActiveBucketId();
         IndexEntry indexEntry = IndexEntry.builder()
                 .setTstamp(tstamp)
-                // .setBucketId(BufferPool.getInstance().getActiveBucketId())
-                //.setOffset()        // TODO: 获取该条目在文件的偏移量
+                .setBucketId(id)
+                .setOffset(bucketManager.bucketSize(id))
                 .setValueSize(bucketEntry.getValueSize())
                 .build();
         indexMap.put(key, indexEntry);
@@ -99,7 +100,6 @@ public class Bitcask implements IBitcask {
         if(indexMap.isExisted(key)){
             IndexEntry indexEntry = indexMap.get(key);
             // read from buffer, aim to find the val
-            //  TODO: BufferPool and ThreadSafe
             res = category.deserialize(bucketManager.readBucket(indexEntry));
         }
         return res;

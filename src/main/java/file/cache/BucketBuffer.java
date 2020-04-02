@@ -1,6 +1,7 @@
 package file.cache;
 
 import sun.nio.ch.FileChannelImpl;
+import util.ConvertUtil;
 import util.FileUtil;
 
 import java.io.File;
@@ -20,7 +21,7 @@ public class BucketBuffer {
 
     private BucketBuffer(){}
 
-    public static BucketBuffer getInstance(){
+    public static BucketBuffer newInstance(){
         return new BucketBuffer();
     }
 
@@ -58,7 +59,7 @@ public class BucketBuffer {
         return bucketBuffer;
     }
 
-    public MappedByteBuffer getSimpleBuffer() {
+    private MappedByteBuffer getSimpleBuffer() {
         if (simpleBuffer == null) {
             writeLock.lock();
             try {
@@ -66,7 +67,7 @@ public class BucketBuffer {
                     try(RandomAccessFile raf = new RandomAccessFile(FileUtil.getSimpleBufferFile(), "rw")){
                         simpleBuffer = raf
                                 .getChannel()
-                                .map(FileChannel.MapMode.READ_WRITE, 0, Long.BYTES << 1);
+                                .map(FileChannel.MapMode.READ_WRITE, 0, Integer.BYTES);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -113,10 +114,10 @@ public class BucketBuffer {
     //<editor-fold desc="getter and setter">
     public int getActiveBucketId(){
         int res;
+        getSimpleBuffer();
         readLock.lock();
         try {
-            res = simpleBuffer.getInt(Long.BYTES);
-
+            res = simpleBuffer.getInt(0);
         } finally {
             readLock.unlock();
         }
@@ -126,30 +127,8 @@ public class BucketBuffer {
     public void setActiveBucketId(int id){
         writeLock.lock();
         try {
-            simpleBuffer.putInt(Long.BYTES, id);
-            simpleBuffer.force();
-        } finally {
-            writeLock.unlock();
-        }
-    }
-
-    public long getBucketOffset(){
-        long res;
-        readLock.lock();
-        try {
-            res = simpleBuffer.getLong();
-
-        } finally {
-            readLock.unlock();
-        }
-        return res;
-    }
-
-    public void setBucketOffset(long offset){
-        writeLock.lock();
-        try {
-            simpleBuffer.putLong(offset);
-            simpleBuffer.force();
+            getSimpleBuffer().putInt(0, id);
+            getSimpleBuffer().force();
         } finally {
             writeLock.unlock();
         }

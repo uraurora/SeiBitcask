@@ -5,11 +5,9 @@ import core.constant.StaticVar;
 import file.cache.BucketBuffer;
 import file.entity.BucketEntry;
 import file.entity.IndexEntry;
-import util.ConvertUtil;
 import util.FileUtil;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.LongAdder;
 import java.util.concurrent.locks.Lock;
@@ -30,7 +28,7 @@ public class BucketManager {
     private BucketBuffer buffer;
 
     private BucketManager(){
-        this.buffer = BucketBuffer.getInstance();
+        this.buffer = BucketBuffer.newInstance();
     }
 
     public static BucketManager newInstance(){
@@ -53,11 +51,11 @@ public class BucketManager {
         LongAdder offset = new LongAdder();
         AtomicInteger id = new AtomicInteger(buffer.getActiveBucketId());
 
-        target = FileUtil.getFile(id.get(), FileConstEnum.BUCKET_PREFIX);
+        target = FileUtil.getFile(id.get());
         offset.add(target.length());
         if(offset.longValue() > StaticVar.BUCKET_MAX_SIZE - entry.size()){
             // 新建bucket文件
-            target = FileUtil.getFile(id.incrementAndGet(), FileConstEnum.BUCKET_PREFIX);
+            target = FileUtil.getFile(id.incrementAndGet());
             offset.reset();
             buffer.setActiveBucketId(id.get());
         }
@@ -69,9 +67,6 @@ public class BucketManager {
         finally {
             writeLock.unlock();
         }
-
-        offset.add(entry.size());
-        buffer.setBucketOffset(offset.longValue());
     }
 
     /**
@@ -88,16 +83,33 @@ public class BucketManager {
         readLock.lock();
         try {
             target = FileUtil.getFile(indexEntry.getBucketId(), FileConstEnum.BUCKET_PREFIX);
-            res = FileUtil.read(target, indexEntry.getOffset(), indexEntry.getValueSize());
+            res = FileUtil.read(target, indexEntry.getOffset() - indexEntry.getValueSize(), indexEntry.getValueSize());
         } finally {
             readLock.unlock();
         }
         return res;
     }
-
-    public void setActiveBucketId(int id){
-
-    }
     //</editor-fold>
+
+    public long bucketSize(int id){
+        long res;
+        readLock.lock();
+        try{
+            res = FileUtil.getFile(id).length();
+        }
+        finally {
+            readLock.unlock();
+        }
+        return res;
+    }
+
+    public int getActiveBucketId(){
+        return buffer.getActiveBucketId();
+    }
+
+    public void release(){
+        buffer.closeSimpleBuffer();
+        buffer.closeBucketBuffer();
+    }
 
 }

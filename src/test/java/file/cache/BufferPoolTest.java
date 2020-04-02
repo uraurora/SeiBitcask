@@ -27,7 +27,7 @@ public class BufferPoolTest {
     }
 
     @Test
-    public void fileTest() throws IOException {
+    public void fileTest() {
         File file = new File(".//test.txt");
         Byte read = FileUtil.read(file, 5, FileCategory.BYTE);
         System.out.println(read);

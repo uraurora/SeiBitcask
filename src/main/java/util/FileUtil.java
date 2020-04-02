@@ -78,6 +78,10 @@ public final class FileUtil {
         return new File(fileName(id, type));
     }
 
+    public static File getFile(int id){
+        return new File(fileName(id, FileConstEnum.BUCKET_PREFIX));
+    }
+
     public static File getSimpleBufferFile(){
         return new File(StaticVar.FILE_DIR+StaticVar.CACHE_FILE_NAME);
     }

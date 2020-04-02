@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89d9ced8-492c-4467-a919-d6b98f8317b7" name="Default Changelist" comment="优化buffer，增加bucket读写的逻辑">
-      <change afterPath="$PROJECT_DIR$/src/main/java/core/constant/StaticVar.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/file/cache/BucketBuffer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/file/cache/BufferPool.java" afterDir="false" />
+    <list default="true" id="89d9ced8-492c-4467-a919-d6b98f8317b7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/file/cache/BucketBufferTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cache/BucketBuffer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cache/BufferPool.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cache/SimpleBuffer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/constant/EntrySizeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/constant/EntrySizeEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/constant/FileConstEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/constant/FileConstEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/constant/StaticVar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/constant/StaticVar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/db/Bitcask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/db/Bitcask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/file/cache/BucketBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/cache/BucketBuffer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/file/manager/BucketManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/manager/BucketManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/FileUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/cache/BufferPoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/file/cache/BufferPoolTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/file/cache/BufferPoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/file/cache/BufferPoolTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,9 +20,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="JUnit4 Test Class" />
         <option value="Enum" />
         <option value="Class" />
+        <option value="JUnit4 Test Class" />
       </list>
     </option>
   </component>
@@ -56,6 +51,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="file.cache" />
       <recent name="cache" />
       <recent name="util" />
     </key>
@@ -63,8 +59,8 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BufferPoolTest.append2">
-    <configuration name="BufferPoolTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.BucketBufferTest.setActiveBucketId">
+    <configuration name="BucketBufferTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="plainKVDB" />
       <extension name="coverage">
         <pattern>
@@ -73,13 +69,13 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="file.cache" />
-      <option name="MAIN_CLASS_NAME" value="file.cache.BufferPoolTest" />
+      <option name="MAIN_CLASS_NAME" value="file.cache.BucketBufferTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BufferPoolTest.append" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BucketBufferTest.getActiveBucketId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="plainKVDB" />
       <extension name="coverage">
         <pattern>
@@ -88,56 +84,56 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="file.cache" />
-      <option name="MAIN_CLASS_NAME" value="file.cache.BufferPoolTest" />
-      <option name="METHOD_NAME" value="append" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BufferPoolTest.append2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="plainKVDB" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="file.cache.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="file.cache" />
-      <option name="MAIN_CLASS_NAME" value="file.cache.BufferPoolTest" />
-      <option name="METHOD_NAME" value="append2" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BufferPoolTest.fileTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="plainKVDB" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="file.cache.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="file.cache" />
-      <option name="MAIN_CLASS_NAME" value="file.cache.BufferPoolTest" />
-      <option name="METHOD_NAME" value="fileTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BufferPoolTest.getActiveBucketId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="plainKVDB" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="file.cache.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="file.cache" />
-      <option name="MAIN_CLASS_NAME" value="file.cache.BufferPoolTest" />
+      <option name="MAIN_CLASS_NAME" value="file.cache.BucketBufferTest" />
       <option name="METHOD_NAME" value="getActiveBucketId" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BucketBufferTest.getBucketOffset" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="plainKVDB" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="file.cache.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="file.cache" />
+      <option name="MAIN_CLASS_NAME" value="file.cache.BucketBufferTest" />
+      <option name="METHOD_NAME" value="getBucketOffset" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BucketBufferTest.setActiveBucketId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="plainKVDB" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="file.cache.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="file.cache" />
+      <option name="MAIN_CLASS_NAME" value="file.cache.BucketBufferTest" />
+      <option name="METHOD_NAME" value="setActiveBucketId" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BucketBufferTest.setBucketOffset" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="plainKVDB" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="file.cache.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="file.cache" />
+      <option name="MAIN_CLASS_NAME" value="file.cache.BucketBufferTest" />
+      <option name="METHOD_NAME" value="setBucketOffset" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -145,11 +141,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BufferPoolTest.append2" />
-        <item itemvalue="JUnit.BufferPoolTest.append" />
-        <item itemvalue="JUnit.BufferPoolTest" />
-        <item itemvalue="JUnit.BufferPoolTest.fileTest" />
-        <item itemvalue="JUnit.BufferPoolTest.getActiveBucketId" />
+        <item itemvalue="JUnit.BucketBufferTest.setActiveBucketId" />
+        <item itemvalue="JUnit.BucketBufferTest.getActiveBucketId" />
+        <item itemvalue="JUnit.BucketBufferTest" />
+        <item itemvalue="JUnit.BucketBufferTest.getBucketOffset" />
+        <item itemvalue="JUnit.BucketBufferTest.setBucketOffset" />
       </list>
     </recent_temporary>
   </component>
@@ -175,7 +171,8 @@
       <workItem from="1585540855237" duration="10259000" />
       <workItem from="1585637549603" duration="9082000" />
       <workItem from="1585653652554" duration="3018000" />
-      <workItem from="1585712158417" duration="22802000" />
+      <workItem from="1585712158417" duration="22926000" />
+      <workItem from="1585797355970" duration="15230000" />
     </task>
     <task id="LOCAL-00001" summary="添加全局索引map和Bucket管理者">
       <created>1585395635039</created>
@@ -212,7 +209,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585650562537</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="优化buffer，增加bucket读写的逻辑">
+      <created>1585747719634</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1585747719634</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -244,46 +248,46 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="739" y="378" width="441" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1585477308213" />
-    <state x="545" y="114" key="CommitChangelistDialog2" timestamp="1585747647702">
+    <state x="545" y="114" key="CommitChangelistDialog2" timestamp="1585747718186">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="545" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1585747647702" />
+    <state x="545" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1585747718186" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1585655761049">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585655761049" />
-    <state width="1877" height="58" key="GridCell.Tab.0.bottom" timestamp="1585650604530">
+    <state width="1877" height="233" key="GridCell.Tab.0.bottom" timestamp="1585807170724">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="58" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585650604530" />
-    <state width="1877" height="58" key="GridCell.Tab.0.center" timestamp="1585650604530">
+    <state width="1877" height="233" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585807170724" />
+    <state width="1877" height="233" key="GridCell.Tab.0.center" timestamp="1585807170724">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="58" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585650604530" />
-    <state width="1877" height="58" key="GridCell.Tab.0.left" timestamp="1585650604530">
+    <state width="1877" height="233" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585807170724" />
+    <state width="1877" height="233" key="GridCell.Tab.0.left" timestamp="1585807170724">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="58" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585650604530" />
-    <state width="1877" height="58" key="GridCell.Tab.0.right" timestamp="1585650604530">
+    <state width="1877" height="233" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585807170724" />
+    <state width="1877" height="233" key="GridCell.Tab.0.right" timestamp="1585807170724">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="58" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585650604530" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1585490904185">
+    <state width="1877" height="233" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585807170724" />
+    <state width="1877" height="116" key="GridCell.Tab.1.bottom" timestamp="1585806494317">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585490904185" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1585490904185">
+    <state width="1877" height="116" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585806494317" />
+    <state width="1877" height="116" key="GridCell.Tab.1.center" timestamp="1585806494317">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585490904185" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1585490904185">
+    <state width="1877" height="116" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585806494317" />
+    <state width="1877" height="116" key="GridCell.Tab.1.left" timestamp="1585806494317">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585490904185" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1585490904185">
+    <state width="1877" height="116" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585806494317" />
+    <state width="1877" height="116" key="GridCell.Tab.1.right" timestamp="1585806494317">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585490904185" />
+    <state width="1877" height="116" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585806494317" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1585387888987">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -292,18 +296,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1585565797955" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1585650583544">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1585747763816">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585650583544" />
-    <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1585451787604">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585747763816" />
+    <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1585797575571">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="640" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585451787604" />
-    <state x="731" y="222" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1585578336762">
+    <state x="640" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585797575571" />
+    <state x="731" y="222" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1585798447346">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="731" y="222" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585578336762" />
+    <state x="731" y="222" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585798447346" />
     <state x="690" y="273" key="extract.method.dialog" timestamp="1585483723569">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
