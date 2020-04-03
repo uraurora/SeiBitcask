@@ -1,0 +1,5 @@
+bucket :
+  path : ".//file//bucket//"
+  maxSize : 2147483648
+keyMaxSize : 32
+valueMaxSize : 134217728
