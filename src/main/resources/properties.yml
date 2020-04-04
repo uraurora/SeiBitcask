@@ -1,5 +1,10 @@
 bucket :
-  path : ".//file//bucket//"
-  maxSize : 2147483648
-keyMaxSize : 32
-valueMaxSize : 134217728
+  file_path : "./file/bucket/"
+  max_size : 2147483648
+
+cache :
+  file_path : "./file/"
+  file_name : "cache.dat"
+
+key_max_size : 32
+value_max_size : 134217728

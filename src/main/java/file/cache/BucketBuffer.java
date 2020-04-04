@@ -68,6 +68,8 @@ public class BucketBuffer {
                         simpleBuffer = raf
                                 .getChannel()
                                 .map(FileChannel.MapMode.READ_WRITE, 0, Integer.BYTES);
+                        simpleBuffer.putInt(0, 0);
+                        simpleBuffer.force();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

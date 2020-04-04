@@ -19,7 +19,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * @description Bucket文件的管理类 //TODO:finish the methods
  * @date 18:45 2020/3/28
  */
-public class BucketManager {
+public class BucketManager implements IBucketManager {
     /**
      * save, remove, update, get
      * insert, delete, update, select
@@ -46,6 +46,7 @@ public class BucketManager {
      * 将bucketEntry序列化好的对象写入Bucket文件
      * @param entry 序列化好的对象
      */
+    @Override
     public void writeBucket(BucketEntry entry){
         File target;
         LongAdder offset = new LongAdder();
@@ -74,6 +75,7 @@ public class BucketManager {
      * @param indexEntry 索引文件条目，内部包含要找的对象的位置信息
      * @return 所查找的依据某种序列化的对象
      */
+    @Override
     public byte[] readBucket(IndexEntry indexEntry){
         File target;
         byte[] res;
@@ -91,6 +93,7 @@ public class BucketManager {
     }
     //</editor-fold>
 
+    @Override
     public long bucketSize(int id){
         long res;
         readLock.lock();
@@ -103,10 +106,12 @@ public class BucketManager {
         return res;
     }
 
+    @Override
     public int getActiveBucketId(){
         return buffer.getActiveBucketId();
     }
 
+    @Override
     public void release(){
         buffer.closeSimpleBuffer();
         buffer.closeBucketBuffer();

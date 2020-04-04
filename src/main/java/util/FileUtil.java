@@ -87,6 +87,6 @@ public final class FileUtil {
     }
 
     private static String fileName(int id, FileConstEnum type){
-        return type.getVal() + id + FileConstEnum.DATA_SUFFIX.getVal();
+        return "./" + type.getVal() + id + FileConstEnum.DATA_SUFFIX.getVal();
     }
 }

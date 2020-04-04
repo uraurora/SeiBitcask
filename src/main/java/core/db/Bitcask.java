@@ -2,8 +2,8 @@ package core.db;
 
 import file.entity.BucketEntry;
 import file.entity.IndexEntry;
-import file.manager.BucketManager;
-import file.manager.IndexMap;
+import file.manager.IBucketManager;
+import file.manager.IIndexMap;
 import core.constant.BucketSerializeCategory;
 
 import java.time.LocalDateTime;
@@ -18,13 +18,13 @@ import java.util.Optional;
  */
 public class Bitcask implements IBitcask {
 
-    private final BucketManager bucketManager;
+    private final IBucketManager bucketManager;
 
-    private final IndexMap indexMap;
+    private final IIndexMap<String, IndexEntry> indexMap;
 
     private final BucketSerializeCategory category;
 
-    public Bitcask(BucketManager bucketManager, IndexMap indexMap, BucketSerializeCategory category) {
+    public Bitcask(IBucketManager bucketManager, IIndexMap<String, IndexEntry> indexMap, BucketSerializeCategory category) {
         this.bucketManager = bucketManager;
         this.indexMap = indexMap;
         this.category = category;

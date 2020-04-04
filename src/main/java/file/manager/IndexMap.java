@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentMap;
  * @description 内存中的文件索引管理类(因为管理了单机所有Bitcask实例的索引，务必简洁实现)
  * @date 17:26 2020/3/28
  */
-public class IndexMap {
+public class IndexMap implements IIndexMap<String, IndexEntry> {
 
     private final ConcurrentMap<String, IndexEntry> map;
 
@@ -28,18 +28,22 @@ public class IndexMap {
     }
     //</editor-fold>
 
+    @Override
     public boolean isExisted(String key){
         return map.containsKey(key);
     }
 
+    @Override
     public void put(String key, IndexEntry val){
         map.put(key, val);
     }
 
+    @Override
     public void remove(String key){
         map.remove(key);
     }
 
+    @Override
     public IndexEntry get(String key){
         return map.get(key);
     }

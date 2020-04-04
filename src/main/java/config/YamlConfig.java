@@ -20,8 +20,12 @@ public final class YamlConfig {
      */
     public static Map<?, ?> loadYaml(String fileName) {
         InputStream in = YamlConfig.class.getClassLoader().getResourceAsStream(fileName);
-        System.out.println(in);
         return StringUtils.isNotEmpty(fileName) ? (LinkedHashMap<?, ?>) new Yaml().load(in) : null;
+    }
+
+    public static <T> T loadYaml(String fileName, Class<T> clazz) {
+        InputStream in = YamlConfig.class.getClassLoader().getResourceAsStream(fileName);
+        return StringUtils.isNotEmpty(fileName) ? new Yaml().loadAs(in, clazz) : null;
     }
 
     /**
