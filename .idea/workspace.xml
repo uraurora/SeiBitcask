@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="89d9ced8-492c-4467-a919-d6b98f8317b7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/file/manager/IBucketManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/file/manager/IIndexMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/task/merge/IMergeStrategy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/task/merge/mergeTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/file/manager/BucketManagerTest.java" afterDir="false" />
+    <list default="true" id="89d9ced8-492c-4467-a919-d6b98f8317b7" name="Default Changelist" comment="增加Bucket类">
+      <change afterPath="$PROJECT_DIR$/src/main/java/file/entity/Bucket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/config/BitcaskConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/config/YamlConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/YamlConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/db/Bitcask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/db/Bitcask.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/file/cache/BucketBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/cache/BucketBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/file/entity/BucketEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/entity/BucketEntry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/file/manager/BucketManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/manager/BucketManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/file/manager/IndexMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/manager/IndexMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/FileUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/properties.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/properties.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/config/YamlConfigTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/config/YamlConfigTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/file/manager/IBucketManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/manager/IBucketManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,9 +17,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Class" />
         <option value="Interface" />
         <option value="JUnit4 Test Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -50,7 +40,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="extract.method.default.visibility" value="public" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../bitcask-kvdb" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -76,7 +66,7 @@
       <recent name="F:\project\plainKVDB" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BucketManagerTest.readBucket">
+  <component name="RunManager" selected="JUnit.BucketManagerTest.writeBucket">
     <configuration name="BucketBufferTest.getActiveBucketId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="plainKVDB" />
       <extension name="coverage">
@@ -159,8 +149,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BucketManagerTest.readBucket" />
         <item itemvalue="JUnit.BucketManagerTest.writeBucket" />
+        <item itemvalue="JUnit.BucketManagerTest.readBucket" />
         <item itemvalue="JUnit.YamlConfigTest.loadYaml" />
         <item itemvalue="JUnit.BucketBufferTest.setActiveBucketId" />
         <item itemvalue="JUnit.BucketBufferTest.getActiveBucketId" />
@@ -193,7 +183,8 @@
       <workItem from="1585797355970" duration="15867000" />
       <workItem from="1585899217500" duration="6259000" />
       <workItem from="1585920873393" duration="1936000" />
-      <workItem from="1585978627594" duration="12381000" />
+      <workItem from="1585978627594" duration="12438000" />
+      <workItem from="1586091114613" duration="3566000" />
     </task>
     <task id="LOCAL-00001" summary="添加全局索引map和Bucket管理者">
       <created>1585395635039</created>
@@ -258,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585922989964</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="merge">
+      <created>1585992854383</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1585992854383</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,17 +271,19 @@
     <MESSAGE value="优化buffer，增加bucket读写的逻辑" />
     <MESSAGE value="优化buffer，去除offset的文件缓存" />
     <MESSAGE value="yml配置文件" />
-    <option name="LAST_COMMIT_MESSAGE" value="yml配置文件" />
+    <MESSAGE value="merge" />
+    <MESSAGE value="增加Bucket类" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加Bucket类" />
   </component>
   <component name="WindowStateProjectService">
     <state x="676" y="373" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1585386590209">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="676" y="373" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585386590209" />
-    <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser" timestamp="1585984096987">
+    <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser" timestamp="1586092762315">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1585984096987" />
+    <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1586092762315" />
     <state x="670" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1585656408950">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -300,30 +300,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585984144318" />
-    <state x="545" y="114" key="CommitChangelistDialog2" timestamp="1585992828156">
+    <state x="545" y="114" key="CommitChangelistDialog2" timestamp="1586094713591">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="545" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1585992828156" />
+    <state x="545" y="114" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586094713591" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1585985493994">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585985493994" />
-    <state width="1877" height="283" key="GridCell.Tab.0.bottom" timestamp="1585992828191">
+    <state width="1877" height="283" key="GridCell.Tab.0.bottom" timestamp="1586094626035">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="283" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1585992828191" />
-    <state width="1877" height="283" key="GridCell.Tab.0.center" timestamp="1585992828191">
+    <state width="1877" height="283" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586094626035" />
+    <state width="1877" height="283" key="GridCell.Tab.0.center" timestamp="1586094626035">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="283" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1585992828191" />
-    <state width="1877" height="283" key="GridCell.Tab.0.left" timestamp="1585992828191">
+    <state width="1877" height="283" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586094626035" />
+    <state width="1877" height="283" key="GridCell.Tab.0.left" timestamp="1586094626035">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="283" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1585992828191" />
-    <state width="1877" height="283" key="GridCell.Tab.0.right" timestamp="1585992828191">
+    <state width="1877" height="283" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586094626035" />
+    <state width="1877" height="283" key="GridCell.Tab.0.right" timestamp="1586094626035">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="283" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1585992828191" />
+    <state width="1877" height="283" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586094626035" />
     <state width="1877" height="116" key="GridCell.Tab.1.bottom" timestamp="1585834084640">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -348,10 +348,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1585565797955" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1585923002839">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1585992859654">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585923002839" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1585992859654" />
     <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1585978633412">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -372,6 +372,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="661" y="137" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585645776635" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1586092686124">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586092686124" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585746795812">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

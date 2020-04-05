@@ -1,13 +1,16 @@
 package file.manager;
 
+import com.sun.istack.internal.NotNull;
 import core.constant.FileConstEnum;
 import core.constant.StaticVar;
 import file.cache.BucketBuffer;
+import file.entity.Bucket;
 import file.entity.BucketEntry;
 import file.entity.IndexEntry;
 import util.FileUtil;
 
 import java.io.File;
+import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.LongAdder;
 import java.util.concurrent.locks.Lock;
@@ -47,10 +50,10 @@ public class BucketManager implements IBucketManager {
      * @param entry 序列化好的对象
      */
     @Override
-    public void writeBucket(BucketEntry entry){
+    public void writeBucket(@NotNull BucketEntry entry){
         File target;
-        LongAdder offset = new LongAdder();
-        AtomicInteger id = new AtomicInteger(buffer.getActiveBucketId());
+        final LongAdder offset = new LongAdder();
+        final AtomicInteger id = new AtomicInteger(buffer.getActiveBucketId());
 
         target = FileUtil.getFile(id.get());
         offset.add(target.length());
@@ -63,7 +66,9 @@ public class BucketManager implements IBucketManager {
 
         writeLock.lock();
         try {
-            FileUtil.write(target, entry.toBytes(), offset.longValue());
+            //FileUtil.write(target, entry.toBytes(), offset.longValue());
+            //FileUtil.writeTail(target, entry.toBytes());
+            Bucket.newInstance(target).write(entry);
         }
         finally {
             writeLock.unlock();
@@ -85,7 +90,7 @@ public class BucketManager implements IBucketManager {
         readLock.lock();
         try {
             target = FileUtil.getFile(indexEntry.getBucketId(), FileConstEnum.BUCKET_PREFIX);
-            res = FileUtil.read(target, indexEntry.getOffset() - indexEntry.getValueSize(), indexEntry.getValueSize());
+            res = Bucket.newInstance(target).read(indexEntry);
         } finally {
             readLock.unlock();
         }

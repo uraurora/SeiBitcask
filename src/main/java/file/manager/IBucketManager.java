@@ -1,10 +1,11 @@
 package file.manager;
 
+import com.sun.istack.internal.NotNull;
 import file.entity.BucketEntry;
 import file.entity.IndexEntry;
 
 public interface IBucketManager {
-    void writeBucket(BucketEntry entry);
+    void writeBucket(@NotNull BucketEntry entry);
 
     byte[] readBucket(IndexEntry indexEntry);
 
