@@ -2,6 +2,9 @@ package file.entity;
 
 import util.ConvertUtil;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 
 /**
  * @author sei
@@ -124,4 +127,27 @@ public class BucketEntry {
 
         return result;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BucketEntry that = (BucketEntry) o;
+        return tstamp == that.tstamp &&
+                keySize == that.keySize &&
+                valueSize == that.valueSize &&
+                Arrays.equals(key, that.key) &&
+                Arrays.equals(value, that.value);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(tstamp, keySize, valueSize);
+        result = 31 * result + Arrays.hashCode(key);
+        result = 31 * result + Arrays.hashCode(value);
+        return result;
+    }
+
+
+
 }

@@ -1,5 +1,7 @@
 package file.manager;
 
+import file.dto.BucketEntryDto;
+import file.entity.Bucket;
 import file.entity.BucketEntry;
 import file.entity.IndexEntry;
 import org.junit.Test;
@@ -41,4 +43,13 @@ public class BucketManagerTest {
         System.out.println(Arrays.toString(bytes));
         System.out.println(new String(bytes, StandardCharsets.UTF_8));
     }
+
+    @Test
+    public void bucketTest(){
+        Bucket b = Bucket.newInstance(FileUtil.getFile(0));
+        for (BucketEntryDto e : b) {
+            System.out.println(e);
+        }
+    }
+
 }

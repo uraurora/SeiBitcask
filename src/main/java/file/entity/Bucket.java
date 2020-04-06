@@ -1,5 +1,6 @@
 package file.entity;
 
+import file.dto.BucketEntryDto;
 import util.FileUtil;
 
 import java.io.File;
@@ -8,7 +9,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.Iterator;
 
-public class Bucket implements Iterable<BucketEntry>{
+public class Bucket implements Iterable<BucketEntryDto>{
 
     private final File file;
 
@@ -29,11 +30,14 @@ public class Bucket implements Iterable<BucketEntry>{
     }
 
     @Override
-    public Iterator<BucketEntry> iterator() {
+    public Iterator<BucketEntryDto> iterator() {
         return new BucketItr(0L);
     }
 
-    private class BucketItr implements Iterator<BucketEntry>{
+    /**
+     * bucket文件的迭代器，读取bucket文件的每一个条目，返回一个bucketEntry的迭代器对象
+     */
+    private class BucketItr implements Iterator<BucketEntryDto>{
 
         RandomAccessFile raf;
 
@@ -56,37 +60,40 @@ public class Bucket implements Iterable<BucketEntry>{
         }
 
         @Override
-        public BucketEntry next() {
+        public BucketEntryDto next() {
             int keySize, valueSize;
-            long keyIndex, valueIndex, tst = 0;
+            long tst = 0;
             byte[] key = new byte[0], val = new byte[0];
             try{
                 raf.seek(offset);
+
                 tst = raf.readLong();
-                keyIndex = offset + 8;
-                valueIndex = keyIndex + 4;
-                raf.seek(keyIndex);
                 keySize = raf.readInt();
-                raf.seek(valueIndex);
                 valueSize = raf.readInt();
 
-                key = new byte[keySize];
-                val = new byte[valueSize];
-                offset += 4;
-                raf.seek(offset);
-                raf.read(key);
-                offset += keySize;
-                raf.seek(offset);
-                raf.read(val);
+                key = new byte[keySize]; val = new byte[valueSize];
+
+                raf.read(key); raf.read(val);
+
+                offset += 16 + valueSize + keySize;
 
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return BucketEntry.builder()
+            return BucketEntryDto.builder()
                     .setTstamp(tst)
                     .setKey(key)
                     .setValue(val)
+                    .setOffset(offset)
                     .build();
+        }
+
+        public void close(){
+            try {
+                raf.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
