@@ -66,8 +66,6 @@ public class BucketManager implements IBucketManager {
 
         writeLock.lock();
         try {
-            //FileUtil.write(target, entry.toBytes(), offset.longValue());
-            //FileUtil.writeTail(target, entry.toBytes());
             Bucket.newInstance(target).write(entry);
         }
         finally {

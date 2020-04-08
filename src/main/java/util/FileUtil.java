@@ -89,4 +89,8 @@ public final class FileUtil {
     private static String fileName(int id, FileConstEnum type){
         return "./" + type.getVal() + id + FileConstEnum.DATA_SUFFIX.getVal();
     }
+
+    public static boolean isEmpty(CharSequence cs) {
+        return cs == null || cs.length() == 0;
+    }
 }

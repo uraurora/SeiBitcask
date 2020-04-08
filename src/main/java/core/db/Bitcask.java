@@ -1,5 +1,6 @@
 package core.db;
 
+import core.constant.EntrySizeEnum;
 import file.entity.BucketEntry;
 import file.entity.IndexEntry;
 import file.manager.IBucketManager;
@@ -44,12 +45,11 @@ public class Bitcask implements IBitcask {
         long tstamp = LocalDateTime.now().toEpochSecond(ZoneOffset.of("+8"));
         BucketEntry bucketEntry = BucketEntry.builder()
                 .setTstamp(tstamp)
-                .setKey(category.serialize(Objects.requireNonNull(key)))     // TODO:check
-                .setValue(category.serialize(Objects.requireNonNull(value)))
+                .setKey(check(category.serialize(Objects.requireNonNull(key)), EntrySizeEnum.KEY_MAX_SIZE.getVal()))
+                .setValue(check(category.serialize(value), EntrySizeEnum.VAL_MAX_SIZE.getVal()))
                 .build();
 
         // write the entry to buffer/file
-        // TODO: mind thread safe
         bucketManager.writeBucket(bucketEntry);
 
         // update the indexMap
@@ -73,7 +73,7 @@ public class Bitcask implements IBitcask {
      */
     @Override
     public boolean remove(String key) {
-        return true;
+        return put(key, null);
     }
 
 
@@ -103,6 +103,13 @@ public class Bitcask implements IBitcask {
             res = category.deserialize(bucketManager.readBucket(indexEntry));
         }
         return res;
+    }
+
+    private static byte[] check(byte[] obj, int size){
+        if(obj == null || obj.length > size){
+            throw new IllegalArgumentException(String.format("the bytes size is bound with: %d", size));
+        }
+        return obj;
     }
 
 }

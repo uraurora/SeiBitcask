@@ -1,8 +1,8 @@
 package config;
 
-import org.apache.commons.lang3.StringUtils;
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.Yaml;
+import util.FileUtil;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -20,12 +20,12 @@ public final class YamlConfig {
      */
     public static Map<?, ?> loadYaml(String fileName) {
         InputStream in = YamlConfig.class.getClassLoader().getResourceAsStream(fileName);
-        return StringUtils.isNotEmpty(fileName) ? (LinkedHashMap<?, ?>) new Yaml().load(in) : null;
+        return FileUtil.isEmpty(fileName) ? (LinkedHashMap<?, ?>) new Yaml().load(in) : null;
     }
 
     public static <T> T loadYaml(String fileName, Class<T> clazz) {
         InputStream in = YamlConfig.class.getClassLoader().getResourceAsStream(fileName);
-        return StringUtils.isNotEmpty(fileName) ? new Yaml().loadAs(in, clazz) : null;
+        return FileUtil.isEmpty(fileName) ? new Yaml().loadAs(in, clazz) : null;
     }
 
     /**
@@ -33,7 +33,7 @@ public final class YamlConfig {
      * 〈往yml文件中写数据,数据为map〉
      */
     public static void dumpYaml(String fileName, Map<?, ?> map) throws IOException {
-        if (StringUtils.isNotEmpty(fileName)) {
+        if (FileUtil.isEmpty(fileName)) {
             FileWriter fileWriter = new FileWriter(YamlConfig.class.getResource(fileName).getFile());
             DumperOptions options = new DumperOptions();
             options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);

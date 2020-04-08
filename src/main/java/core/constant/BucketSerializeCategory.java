@@ -1,10 +1,11 @@
 package core.constant;
 
 import com.sun.istack.internal.NotNull;
+import com.sun.istack.internal.Nullable;
 
 public enum BucketSerializeCategory {
 
-    BYTES{
+    DEFAULT{
         @Override
         public <E> byte[] serialize(E object) {
             return new byte[0];
@@ -32,5 +33,5 @@ public enum BucketSerializeCategory {
 
     public abstract <E> byte[] serialize(@NotNull E object);
 
-    public abstract <E> E deserialize(@NotNull byte[] object);
+    public abstract <E> E deserialize(@Nullable byte[] object);
 }
