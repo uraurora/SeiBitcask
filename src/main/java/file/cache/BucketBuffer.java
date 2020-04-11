@@ -1,7 +1,6 @@
 package file.cache;
 
 import sun.nio.ch.FileChannelImpl;
-import util.ConvertUtil;
 import util.FileUtil;
 
 import java.io.File;
@@ -13,7 +12,6 @@ import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
-import java.util.concurrent.locks.ReentrantLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class BucketBuffer {
@@ -135,6 +133,19 @@ public class BucketBuffer {
             writeLock.unlock();
         }
     }
+
+    public int idIncrementAndGet(){
+        int id;
+        writeLock.lock();
+        try {
+            id = getActiveBucketId();
+            getSimpleBuffer().putInt(0, ++id);
+            getSimpleBuffer().force();
+            return id;
+        } finally {
+            writeLock.unlock();
+        }
+    }
     //</editor-fold>
 
     //<editor-fold desc="private static methods">
@@ -152,4 +163,10 @@ public class BucketBuffer {
     //</editor-fold>
 
 
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+        closeBucketBuffer();
+        closeSimpleBuffer();
+    }
 }

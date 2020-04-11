@@ -2,36 +2,39 @@ package core.constant;
 
 import com.sun.istack.internal.NotNull;
 import com.sun.istack.internal.Nullable;
+import util.JsonUtil;
+
+import java.nio.charset.StandardCharsets;
 
 public enum BucketSerializeCategory {
 
     DEFAULT{
         @Override
-        public <E> byte[] serialize(E object) {
-            return new byte[0];
+        public byte[] serialize(String object) {
+            return object == null ? new byte[0] : object.getBytes();
         }
 
         @Override
-        public <E> E deserialize(byte[] object) {
-            return null;
+        public String deserialize(byte[] object) {
+            return new String(object, StandardCharsets.UTF_8);
         }
     },
 
     JSON{
         @Override
-        public <E> byte[] serialize(E object) {
+        public byte[] serialize(String object) {
             return new byte[0];
         }
 
         @Override
-        public <E> E deserialize(byte[] object) {
+        public String deserialize(byte[] object) {
             return null;
         }
     },
 
     ;
 
-    public abstract <E> byte[] serialize(@NotNull E object);
+    public abstract byte[] serialize(@NotNull String object);
 
-    public abstract <E> E deserialize(@Nullable byte[] object);
+    public abstract String deserialize(@Nullable byte[] object);
 }

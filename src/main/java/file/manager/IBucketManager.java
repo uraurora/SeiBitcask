@@ -5,9 +5,10 @@ import file.entity.BucketEntry;
 import file.entity.IndexEntry;
 
 public interface IBucketManager {
+
     void writeBucket(@NotNull BucketEntry entry);
 
-    byte[] readBucket(IndexEntry indexEntry);
+    byte[] readBucket(@NotNull IndexEntry indexEntry);
 
     long bucketSize(int id);
 

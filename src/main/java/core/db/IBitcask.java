@@ -4,11 +4,9 @@ import java.util.Optional;
 
 public interface IBitcask {
 
-    boolean put(String key, Object value);
+    boolean put(String key, String value);
 
     boolean remove(String key);
 
-    Optional<Object> get(String key);
-
-    <T> T get(String key, Class<T> clazz);
+    Optional<String> get(String key);
 }

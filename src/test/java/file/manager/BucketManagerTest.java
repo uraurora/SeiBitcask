@@ -1,5 +1,6 @@
 package file.manager;
 
+import file.cache.BucketBuffer;
 import file.dto.BucketEntryDto;
 import file.entity.Bucket;
 import file.entity.BucketEntry;
@@ -17,7 +18,7 @@ import static org.junit.Assert.*;
 
 public class BucketManagerTest {
 
-    BucketManager bucketManager = BucketManager.newInstance();
+    BucketManager bucketManager = BucketManager.newInstance(BucketBuffer.newInstance());
 
     @Test
     public void writeBucket() {

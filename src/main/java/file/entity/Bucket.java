@@ -32,6 +32,10 @@ public class Bucket implements Iterable<BucketEntryDto>{
 
     @Override
     public Iterator<BucketEntryDto> iterator() {
+        return asList().iterator();
+    }
+
+    public List<BucketEntryDto> asList(){
         final List<BucketEntryDto> list = new ArrayList<>();
         final long end = file.length();
         int keySize, valueSize;
@@ -62,7 +66,7 @@ public class Bucket implements Iterable<BucketEntryDto>{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return list.iterator();
+        return list;
     }
 
 

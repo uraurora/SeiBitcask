@@ -30,12 +30,12 @@ public class BucketManager implements IBucketManager {
      */
     private BucketBuffer buffer;
 
-    private BucketManager(){
-        this.buffer = BucketBuffer.newInstance();
+    private BucketManager(BucketBuffer buffer){
+        this.buffer = buffer;
     }
 
-    public static BucketManager newInstance(){
-        return new BucketManager();
+    public static BucketManager newInstance(BucketBuffer buffer){
+        return new BucketManager(buffer);
     }
 
     private final ReadWriteLock lock = new ReentrantReadWriteLock();
@@ -52,20 +52,16 @@ public class BucketManager implements IBucketManager {
     @Override
     public void writeBucket(@NotNull BucketEntry entry){
         File target;
-        final LongAdder offset = new LongAdder();
-        final AtomicInteger id = new AtomicInteger(buffer.getActiveBucketId());
-
-        target = FileUtil.getFile(id.get());
-        offset.add(target.length());
-        if(offset.longValue() > StaticVar.BUCKET_MAX_SIZE - entry.size()){
-            // 新建bucket文件
-            target = FileUtil.getFile(id.incrementAndGet());
-            offset.reset();
-            buffer.setActiveBucketId(id.get());
-        }
-
+        long offset;
+        final int id = buffer.getActiveBucketId();
         writeLock.lock();
         try {
+            target = FileUtil.getFile(id);
+            offset = target.length();
+            if(offset > StaticVar.BUCKET_MAX_SIZE - entry.size()){
+                // 新建bucket文件
+                target = FileUtil.getFile(buffer.idIncrementAndGet());
+            }
             Bucket.newInstance(target).write(entry);
         }
         finally {
@@ -79,7 +75,7 @@ public class BucketManager implements IBucketManager {
      * @return 所查找的依据某种序列化的对象
      */
     @Override
-    public byte[] readBucket(IndexEntry indexEntry){
+    public byte[] readBucket(@NotNull IndexEntry indexEntry){
         File target;
         byte[] res;
         // TODO:cache

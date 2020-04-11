@@ -1,11 +1,14 @@
 package core.db;
 
 import core.constant.EntrySizeEnum;
+import file.cache.BucketBuffer;
 import file.entity.BucketEntry;
 import file.entity.IndexEntry;
+import file.manager.BucketManager;
 import file.manager.IBucketManager;
 import file.manager.IIndexMap;
 import core.constant.BucketSerializeCategory;
+import file.manager.IndexMap;
 
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -25,10 +28,18 @@ public class Bitcask implements IBitcask {
 
     private final BucketSerializeCategory category;
 
-    public Bitcask(IBucketManager bucketManager, IIndexMap<String, IndexEntry> indexMap, BucketSerializeCategory category) {
-        this.bucketManager = bucketManager;
+    public Bitcask(IIndexMap<String, IndexEntry> indexMap, BucketSerializeCategory category) {
+        this.bucketManager = BucketManager.newInstance(BucketBuffer.newInstance());
         this.indexMap = indexMap;
         this.category = category;
+    }
+
+    public static Bitcask newInstance(){
+        return new Bitcask(IndexMap.getInstance(), BucketSerializeCategory.DEFAULT);
+    }
+
+    public static Bitcask newInstance(IIndexMap<String, IndexEntry> indexMap){
+        return new Bitcask(indexMap, BucketSerializeCategory.DEFAULT);
     }
 
     /**
@@ -40,7 +51,7 @@ public class Bitcask implements IBitcask {
      * @return 是否成功
      */
     @Override
-    public boolean put(String key, Object value) {
+    public boolean put(String key, String value) {
         // serialize the key and val, generate bucketEntry
         long tstamp = LocalDateTime.now().toEpochSecond(ZoneOffset.of("+8"));
         BucketEntry bucketEntry = BucketEntry.builder()
@@ -77,16 +88,6 @@ public class Bitcask implements IBitcask {
     }
 
 
-    @Override
-    public Optional<Object> get(String key) {
-        return Optional.ofNullable(getObject(key));
-    }
-
-    @Override
-    public <T> T get(String key, Class<T> clazz) {
-        return clazz.cast(getObject(key));
-    }
-
     /**
      * 1、在IndexMap中查找键是否存在，不存在返回信息
      * 2、存在的话得到IndexEntry，判断bucketId为active bucketId，是的话从缓存区中查找，
@@ -95,14 +96,15 @@ public class Bitcask implements IBitcask {
      * @param key 查询的键
      * @return 查询结果
      */
-    private Object getObject(String key){
-        Object res = null;
+    @Override
+    public Optional<String> get(String key) {
+        String res = null;
         if(indexMap.isExisted(key)){
             IndexEntry indexEntry = indexMap.get(key);
             // read from buffer, aim to find the val
             res = category.deserialize(bucketManager.readBucket(indexEntry));
         }
-        return res;
+        return Optional.ofNullable(res);
     }
 
     private static byte[] check(byte[] obj, int size){
