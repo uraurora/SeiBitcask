@@ -47,7 +47,7 @@ public class BucketManagerTest {
 
     @Test
     public void bucketTest(){
-        Bucket b = Bucket.newInstance(FileUtil.getFile(0));
+        Bucket b = Bucket.newInstance(FileUtil.getFile(3));
         for (BucketEntryDto e : b) {
             System.out.println(e);
         }

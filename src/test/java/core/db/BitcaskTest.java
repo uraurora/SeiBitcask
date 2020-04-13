@@ -20,15 +20,20 @@ public class BitcaskTest {
 
     @Test
     public void get() {
-        Dog dog1 = new Dog(1, "mary");
-        Cat cat1 = new Cat(4, "tom");
-        bitcask.put("dog", dog1.toString());
-        bitcask.put("cat", cat1.toString());
-        String dog = bitcask.get("dog").get();
-        String cat = bitcask.get("cat").get();
-        System.out.println(dog);
-        System.out.println(cat);
-        bitcask.remove("dog");
+        for (int i = 0; i < 5; i++) {
+            Dog dog1 = new Dog(1, "mary");
+            Cat cat1 = new Cat(4, "tom");
+            bitcask.put("dog", dog1.toString());
+            bitcask.put("cat", cat1.toString());
+            String dog = bitcask.get("dog").get();
+            String cat = bitcask.get("cat").get();
+            System.out.println(dog);
+            System.out.println(cat);
+            bitcask.remove("dog");
+        }
+
+
+
     }
 
     @Test

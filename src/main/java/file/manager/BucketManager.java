@@ -52,11 +52,10 @@ public class BucketManager implements IBucketManager {
     @Override
     public void writeBucket(@NotNull BucketEntry entry){
         File target;
-        long offset;
-        final int id = buffer.getActiveBucketId();
+        final long offset;
         writeLock.lock();
         try {
-            target = FileUtil.getFile(id);
+            target = FileUtil.getFile(buffer.getActiveBucketId());
             offset = target.length();
             if(offset > StaticVar.BUCKET_MAX_SIZE - entry.size()){
                 // 新建bucket文件

@@ -8,5 +8,7 @@ public class StaticVar {
 
     public static final String CACHE_FILE_NAME = "cache.txt";
 
-    public static final int BUCKET_MAX_SIZE = Integer.MAX_VALUE;
+    public static final int BUCKET_MAX_SIZE = 2048;
+
+    public static final int BUCKET_MAX_NUM = 256;
 }
