@@ -1,6 +1,19 @@
-package core.constant;
+package config;
 
-public class StaticVar {
+import config.YamlConfig;
+
+/***
+ * @author sei
+ * @description
+ * @date 15:58 2020/4/15
+ */
+public final class GlobalConstant {
+
+//    private final static ConstEntity CONST_ENTITY;
+//
+//    static {
+//
+//    }
 
     // TODO: 配置表
 

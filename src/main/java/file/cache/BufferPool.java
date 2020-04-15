@@ -12,11 +12,11 @@ public class BufferPool {
     private BufferPool(){}
 
     private static class BufferPoolHolder{
-        private final static BufferPool instance = new BufferPool();
+        private final static BufferPool INSTANCE = new BufferPool();
     }
 
     public static BufferPool getInstance(){
-        return BufferPoolHolder.instance;
+        return BufferPoolHolder.INSTANCE;
     }
 
 

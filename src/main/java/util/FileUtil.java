@@ -2,7 +2,7 @@ package util;
 
 import core.constant.FileCategory;
 import core.constant.FileConstEnum;
-import core.constant.StaticVar;
+import config.GlobalConstant;
 
 import java.io.*;
 
@@ -83,7 +83,7 @@ public final class FileUtil {
     }
 
     public static File getSimpleBufferFile(){
-        return new File(StaticVar.FILE_DIR+StaticVar.CACHE_FILE_NAME);
+        return new File(GlobalConstant.FILE_DIR+ GlobalConstant.CACHE_FILE_NAME);
     }
 
     private static String fileName(int id, FileConstEnum type){

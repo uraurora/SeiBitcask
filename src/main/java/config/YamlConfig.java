@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public final class YamlConfig {
+final class YamlConfig {
 
     private YamlConfig(){}
 
@@ -55,7 +55,9 @@ public final class YamlConfig {
                     String left = input.substring(0, index);
                     String right = input.substring(index + 1);
                     return getProperty((Map<?, ?>) map.get(left), right);
-                } else return map.getOrDefault(input, null);
+                } else {
+                    return map.getOrDefault(input, null);
+                }
             }
         }
         return null;
@@ -69,7 +71,7 @@ public final class YamlConfig {
     public static void setProperty(Map<?, ?> map, Object qualifiedKey, Object value) {
         if (map != null && !map.isEmpty() && qualifiedKey != null) {
             String input = String.valueOf(qualifiedKey);
-            if (!input.equals("")) {
+            if (!"".equals(input)) {
                 if (input.contains(".")) {
                     int index = input.indexOf(".");
                     String left = input.substring(0, index);

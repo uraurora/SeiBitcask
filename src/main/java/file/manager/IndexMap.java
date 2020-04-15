@@ -16,14 +16,15 @@ public class IndexMap implements IIndexMap<String, IndexEntry> {
     private final ConcurrentMap<String, IndexEntry> map;
 
     //<editor-fold desc="单例模式">
+
     private IndexMap(){this.map = new ConcurrentHashMap<>();}
 
     private static class IndexMapHolder{
-        private static final IndexMap instance = new IndexMap();
+        private static final IndexMap INSTANCE = new IndexMap();
     }
 
     public static IndexMap getInstance(){
-        return IndexMapHolder.instance;
+        return IndexMapHolder.INSTANCE;
     }
     //</editor-fold>
 

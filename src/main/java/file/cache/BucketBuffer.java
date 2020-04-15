@@ -15,7 +15,6 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 public class BucketBuffer {
-    // TODO:logger,此外不应该做成单例，多个bitcask实例应该持有一个bucketManager，而每个bucketManager都有一个bucketbuffer
 
     private BucketBuffer(){}
 

@@ -2,12 +2,13 @@ package core.constant;
 
 import com.sun.istack.internal.NotNull;
 import com.sun.istack.internal.Nullable;
-import util.JsonUtil;
 
 import java.nio.charset.StandardCharsets;
 
 public enum BucketSerializeCategory {
-
+    /**
+     * 默认序列化策略
+     */
     DEFAULT{
         @Override
         public byte[] serialize(String object) {
@@ -19,7 +20,9 @@ public enum BucketSerializeCategory {
             return new String(object, StandardCharsets.UTF_8);
         }
     },
-
+    /**
+     * json
+     */
     JSON{
         @Override
         public byte[] serialize(String object) {

@@ -101,7 +101,7 @@ public class BucketEntry {
     }
 
     public int size(){
-        return 8 + 4 + 4 + this.getKeySize() + this.getValueSize();
+        return Long.BYTES + Integer.BYTES + Integer.BYTES + this.getKeySize() + this.getValueSize();
     }
 
     public byte[] toBytes(){
@@ -130,8 +130,12 @@ public class BucketEntry {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         BucketEntry that = (BucketEntry) o;
         return tstamp == that.tstamp &&
                 keySize == that.keySize &&

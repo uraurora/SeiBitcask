@@ -2,7 +2,7 @@ package file.manager;
 
 import com.sun.istack.internal.NotNull;
 import core.constant.FileConstEnum;
-import core.constant.StaticVar;
+import config.GlobalConstant;
 import file.cache.BucketBuffer;
 import file.entity.Bucket;
 import file.entity.BucketEntry;
@@ -10,16 +10,13 @@ import file.entity.IndexEntry;
 import util.FileUtil;
 
 import java.io.File;
-import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.LongAdder;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /***
  * @author sei
- * @description Bucket文件的管理类 //TODO:finish the methods
+ * @description Bucket文件的管理类
  * @date 18:45 2020/3/28
  */
 public class BucketManager implements IBucketManager {
@@ -28,7 +25,7 @@ public class BucketManager implements IBucketManager {
      * insert, delete, update, select
      * 实现键值的增删改查，其中增改是一样的实现，删需要处理一下BucketEntry，查一是文件的查，二是缓存查
      */
-    private BucketBuffer buffer;
+    private final BucketBuffer buffer;
 
     private BucketManager(BucketBuffer buffer){
         this.buffer = buffer;
@@ -57,7 +54,7 @@ public class BucketManager implements IBucketManager {
         try {
             target = FileUtil.getFile(buffer.getActiveBucketId());
             offset = target.length();
-            if(offset > StaticVar.BUCKET_MAX_SIZE - entry.size()){
+            if(offset > GlobalConstant.BUCKET_MAX_SIZE - entry.size()){
                 // 新建bucket文件
                 target = FileUtil.getFile(buffer.idIncrementAndGet());
             }
