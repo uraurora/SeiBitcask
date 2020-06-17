@@ -27,7 +27,7 @@ public class BufferPoolTest {
     }
 
     @Test
-    public void fileTest() {
+    public void fileTest() throws IOException {
         File file = new File(".//test.txt");
         Byte read = FileUtil.read(file, 5, FileCategory.BYTE);
         System.out.println(read);
@@ -36,14 +36,14 @@ public class BufferPoolTest {
     }
 
     @Test
-    public void append(){
+    public void append() throws IOException {
         File file = new File(".//test.txt");
         byte[] a = new byte[]{'s', 'e', 'i'};
         FileUtil.writeTail(file.toPath(), a);
     }
 
     @Test
-    public void append2(){
+    public void append2() throws IOException {
         File file = new File(".//test.txt");
         byte[] a = new byte[]{'s', 'e', 'i'};
         FileUtil.write(file, a, file.length());

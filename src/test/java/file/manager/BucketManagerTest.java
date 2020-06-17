@@ -8,6 +8,7 @@ import file.entity.IndexEntry;
 import org.junit.Test;
 import util.FileUtil;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
@@ -43,8 +44,8 @@ public class BucketManagerTest {
     }
 
     @Test
-    public void bucketTest(){
-        Bucket b = Bucket.newInstance(FileUtil.getPath(3));
+    public void bucketTest() throws IOException {
+        Bucket b = Bucket.newInstance(FileUtil.getPath(0));
         for (BucketEntryDto e : b) {
             System.out.println(e);
         }

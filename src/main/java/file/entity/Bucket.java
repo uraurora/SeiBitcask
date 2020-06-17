@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -24,11 +25,11 @@ public class Bucket implements Iterable<BucketEntryDto>{
         return new Bucket(path);
     }
 
-    public void write(BucketEntry entry) {
-        FileUtil.writeTail(path, entry.toBytes());
+    public void write(BucketEntry entry) throws IOException {
+        Files.write(path, entry.toBytes(), StandardOpenOption.APPEND);
     }
 
-    public byte[] read(IndexEntry indexEntry) {
+    public byte[] read(IndexEntry indexEntry) throws IOException {
         return FileUtil.read(path.toFile(), indexEntry.getOffset() - indexEntry.getValueSize(), indexEntry.getValueSize());
     }
 

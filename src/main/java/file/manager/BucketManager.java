@@ -56,6 +56,7 @@ public class BucketManager implements IBucketManager {
         writeLock.lock();
         try {
             target = FileUtil.getPath(buffer.getActiveBucketId());
+
             offset = Files.size(target);
             if(offset > GlobalConstant.BUCKET_MAX_SIZE - entry.size()){
                 // 新建bucket文件
@@ -77,7 +78,7 @@ public class BucketManager implements IBucketManager {
     @Override
     public byte[] readBucket(@NotNull IndexEntry indexEntry){
         Path target;
-        byte[] res;
+        byte[] res = new byte[0];
         // TODO:cache
         // buffer read
         // if(indexEntry.getBucketId() == )
@@ -85,6 +86,8 @@ public class BucketManager implements IBucketManager {
         try {
             target = FileUtil.getPath(indexEntry.getBucketId(), FileConstEnum.BUCKET_PREFIX);
             res = Bucket.newInstance(target).read(indexEntry);
+        } catch (IOException e) {
+            e.printStackTrace();
         } finally {
             readLock.unlock();
         }

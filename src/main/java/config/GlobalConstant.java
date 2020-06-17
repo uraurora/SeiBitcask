@@ -17,7 +17,7 @@ public final class GlobalConstant {
 
     // TODO: 配置表
 
-    public static final String FILE_DIR = ".//file//";
+    public static final String FILE_DIR = "src//main//resources//";
 
     public static final String CACHE_FILE_NAME = "cache.txt";
 

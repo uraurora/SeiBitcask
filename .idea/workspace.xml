@@ -24,8 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="89d9ced8-492c-4467-a919-d6b98f8317b7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/file/cache/BucketBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/cache/BucketBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/config/GlobalConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/GlobalConstant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/file/entity/Bucket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/entity/Bucket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/file/manager/BucketManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/manager/BucketManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/FileUtil.java" afterDir="false" />
@@ -71,7 +70,7 @@
     <property name="extract.method.default.visibility" value="public" />
     <property name="full.screen.before.presentation.mode" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
@@ -165,7 +164,7 @@
       </method>
     </configuration>
     <configuration name="BucketManagerTest.writeBucket" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="SeiBitcask" />
+      <useClassPathOnly />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="file.manager.*" />
@@ -176,6 +175,7 @@
       <option name="MAIN_CLASS_NAME" value="file.manager.BucketManagerTest" />
       <option name="METHOD_NAME" value="writeBucket" />
       <option name="TEST_OBJECT" value="method" />
+      <option name="PARAMETERS" value="" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -233,7 +233,7 @@
       <workItem from="1586936437805" duration="115000" />
       <workItem from="1586936562379" duration="2413000" />
       <workItem from="1590649422659" duration="2129000" />
-      <workItem from="1592384723213" duration="2741000" />
+      <workItem from="1592384723213" duration="7030000" />
     </task>
     <task id="LOCAL-00001" summary="添加全局索引map和Bucket管理者">
       <created>1585395635039</created>
@@ -347,7 +347,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592386339486</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="修改File为Path">
+      <created>1592388320638</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1592388320638</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,9 +387,26 @@
     <MESSAGE value="多线程优化day2" />
     <MESSAGE value="project rename" />
     <MESSAGE value="介绍" />
-    <option name="LAST_COMMIT_MESSAGE" value="介绍" />
+    <MESSAGE value="修改File为Path" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改File为Path" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="539" y="80" key="#BitcaskTest.put" timestamp="1592398586547">
+      <screen x="0" y="23" width="1920" height="977" />
+    </state>
+    <state x="539" y="80" key="#BitcaskTest.put/0.23.1920.977@0.23.1920.977" timestamp="1592398586547" />
+    <state x="539" y="80" key="#BucketManagerTest.bucketTest" timestamp="1592398392001">
+      <screen x="0" y="23" width="1920" height="977" />
+    </state>
+    <state x="539" y="80" key="#BucketManagerTest.bucketTest/0.23.1920.977@0.23.1920.977" timestamp="1592398392001" />
+    <state x="539" y="80" key="#BucketManagerTest.readBucket" timestamp="1592397499991">
+      <screen x="0" y="23" width="1920" height="977" />
+    </state>
+    <state x="539" y="80" key="#BucketManagerTest.readBucket/0.23.1920.977@0.23.1920.977" timestamp="1592397499991" />
+    <state x="856" y="137" key="#BucketManagerTest.writeBucket" timestamp="1592397488764">
+      <screen x="0" y="23" width="1920" height="977" />
+    </state>
+    <state x="856" y="137" key="#BucketManagerTest.writeBucket/0.23.1920.977@0.23.1920.977" timestamp="1592397488764" />
     <state x="1023" y="430" key="#Custom_Plugin_Repositories" timestamp="1586936301417">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -395,6 +419,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Notifications/0.0.1920.1040@0.0.1920.1040" timestamp="1586932677053" />
+    <state x="448" y="93" key="#Project_Structure" timestamp="1592396014978">
+      <screen x="0" y="23" width="1920" height="977" />
+    </state>
+    <state x="448" y="93" key="#Project_Structure/0.23.1920.977@0.23.1920.977" timestamp="1592396014978" />
     <state x="676" y="373" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1585386590209">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -431,26 +459,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585985493994" />
-    <state width="1878" height="259" key="GridCell.Tab.0.bottom" timestamp="1592387693855">
+    <state width="1878" height="214" key="GridCell.Tab.0.bottom" timestamp="1592398394992">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state width="1877" height="155" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586784641749" />
-    <state width="1878" height="259" key="GridCell.Tab.0.bottom/0.23.1920.977@0.23.1920.977" timestamp="1592387693855" />
-    <state width="1878" height="259" key="GridCell.Tab.0.center" timestamp="1592387693854">
+    <state width="1878" height="214" key="GridCell.Tab.0.bottom/0.23.1920.977@0.23.1920.977" timestamp="1592398394992" />
+    <state width="1878" height="214" key="GridCell.Tab.0.center" timestamp="1592398394991">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state width="1877" height="155" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586784641749" />
-    <state width="1878" height="259" key="GridCell.Tab.0.center/0.23.1920.977@0.23.1920.977" timestamp="1592387693854" />
-    <state width="1878" height="259" key="GridCell.Tab.0.left" timestamp="1592387693854">
+    <state width="1878" height="214" key="GridCell.Tab.0.center/0.23.1920.977@0.23.1920.977" timestamp="1592398394991" />
+    <state width="1878" height="214" key="GridCell.Tab.0.left" timestamp="1592398394990">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state width="1877" height="155" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586784641749" />
-    <state width="1878" height="259" key="GridCell.Tab.0.left/0.23.1920.977@0.23.1920.977" timestamp="1592387693854" />
-    <state width="1878" height="259" key="GridCell.Tab.0.right" timestamp="1592387693854">
+    <state width="1878" height="214" key="GridCell.Tab.0.left/0.23.1920.977@0.23.1920.977" timestamp="1592398394990" />
+    <state width="1878" height="214" key="GridCell.Tab.0.right" timestamp="1592398394991">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state width="1877" height="155" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586784641749" />
-    <state width="1878" height="259" key="GridCell.Tab.0.right/0.23.1920.977@0.23.1920.977" timestamp="1592387693854" />
+    <state width="1878" height="214" key="GridCell.Tab.0.right/0.23.1920.977@0.23.1920.977" timestamp="1592398394991" />
     <state width="1877" height="116" key="GridCell.Tab.1.bottom" timestamp="1586525917856">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -479,11 +507,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1585565797955" />
-    <state x="552" y="261" key="Vcs.Push.Dialog.v2" timestamp="1592386350065">
+    <state x="552" y="261" key="Vcs.Push.Dialog.v2" timestamp="1592388330265">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586763466175" />
-    <state x="552" y="261" key="Vcs.Push.Dialog.v2/0.23.1920.977@0.23.1920.977" timestamp="1592386350065" />
+    <state x="552" y="261" key="Vcs.Push.Dialog.v2/0.23.1920.977@0.23.1920.977" timestamp="1592388330265" />
     <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1586933020292">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -496,11 +524,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="273" key="extract.method.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585483723569" />
-    <state x="567" y="89" width="786" height="846" key="find.popup" timestamp="1592386779615">
+    <state x="567" y="89" width="786" height="846" key="find.popup" timestamp="1592398273835">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="567" y="70" width="786" height="900" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586763338485" />
-    <state x="567" y="89" width="786" height="846" key="find.popup/0.23.1920.977@0.23.1920.977" timestamp="1592386779615" />
+    <state x="567" y="89" width="786" height="846" key="find.popup/0.23.1920.977@0.23.1920.977" timestamp="1592398273835" />
     <state x="675" y="311" key="git4idea.merge.GitPullDialog" timestamp="1585650574015">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -518,9 +546,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586337035046" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1586511748633">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="623" y="234" width="672" height="637" key="search.everywhere.popup" timestamp="1592388307501">
+      <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586511748633" />
+    <state x="623" y="234" width="672" height="637" key="search.everywhere.popup/0.23.1920.977@0.23.1920.977" timestamp="1592388307501" />
   </component>
 </project>

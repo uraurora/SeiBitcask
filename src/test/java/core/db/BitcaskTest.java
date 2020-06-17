@@ -20,7 +20,7 @@ public class BitcaskTest {
 
     @Test
     public void get() {
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 15; i++) {
             Dog dog1 = new Dog(1, "mary");
             Cat cat1 = new Cat(4, "tom");
             bitcask.put("dog", dog1.toString());
