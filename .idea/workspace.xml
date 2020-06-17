@@ -5,24 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89d9ced8-492c-4467-a919-d6b98f8317b7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/smartfox_info.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/config/ConstEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/config/YamlConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/YamlConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/constant/BucketSerializeCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/constant/BucketSerializeCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/core/constant/StaticVar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/GlobalConstant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/file/cache/BucketBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/cache/BucketBuffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/file/cache/BufferPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/cache/BufferPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/file/entity/BucketEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/entity/BucketEntry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/file/entity/IndexEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/entity/IndexEntry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/file/manager/BucketManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/manager/BucketManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/file/manager/IndexMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/manager/IndexMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/FileUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/JsonUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/SerializeUtil.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,6 +38,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -223,6 +209,7 @@
       <workItem from="1586933734543" duration="2485000" />
       <workItem from="1586936437805" duration="115000" />
       <workItem from="1586936562379" duration="2413000" />
+      <workItem from="1590649422659" duration="2129000" />
     </task>
     <task id="LOCAL-00001" summary="添加全局索引map和Bucket管理者">
       <created>1585395635039</created>
