@@ -6,42 +6,50 @@ import util.FileUtil;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class Bucket implements Iterable<BucketEntryDto>{
 
-    private final File file;
+    private final Path path;
 
-    private Bucket(File file) {
-        this.file = file;
+    private Bucket(Path path) {
+        this.path = path;
     }
 
-    public static Bucket newInstance(File file) {
-        return new Bucket(file);
+    public static Bucket newInstance(Path path) {
+        return new Bucket(path);
     }
 
     public void write(BucketEntry entry) {
-        FileUtil.writeTail(file, entry.toBytes());
+        FileUtil.writeTail(path, entry.toBytes());
     }
 
     public byte[] read(IndexEntry indexEntry) {
-        return FileUtil.read(file, indexEntry.getOffset() - indexEntry.getValueSize(), indexEntry.getValueSize());
+        return FileUtil.read(path.toFile(), indexEntry.getOffset() - indexEntry.getValueSize(), indexEntry.getValueSize());
     }
 
     @Override
     public Iterator<BucketEntryDto> iterator() {
-        return asList().iterator();
+        Iterator<BucketEntryDto> res = null;
+        try {
+            res = asList().iterator();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return res;
     }
 
-    public List<BucketEntryDto> asList(){
+    public List<BucketEntryDto> asList() throws IOException {
         final List<BucketEntryDto> list = new ArrayList<>();
-        final long end = file.length();
+        final long end = Files.size(path);
         int keySize, valueSize;
         long tst, offset = 0;
         byte[] key, val;
-        try(RandomAccessFile raf = new RandomAccessFile(file, "r")){
+        try(RandomAccessFile raf = new RandomAccessFile(path.toFile(), "r")){
             while(offset < end - 16){
                 raf.seek(offset);
 

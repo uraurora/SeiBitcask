@@ -3,10 +3,34 @@
   <component name="AnalysisUIOptions">
     <option name="GROUP_BY_SEVERITY" value="true" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="89d9ced8-492c-4467-a919-d6b98f8317b7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/file/cache/BucketBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/cache/BucketBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/file/entity/Bucket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/entity/Bucket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/file/manager/BucketManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/manager/BucketManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/FileUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/file/cache/BufferPoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/file/cache/BufferPoolTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/file/manager/BucketManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/file/manager/BucketManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -209,7 +233,7 @@
       <workItem from="1586936437805" duration="115000" />
       <workItem from="1586936562379" duration="2413000" />
       <workItem from="1590649422659" duration="2129000" />
-      <workItem from="1592384723213" duration="962000" />
+      <workItem from="1592384723213" duration="2741000" />
     </task>
     <task id="LOCAL-00001" summary="添加全局索引map和Bucket管理者">
       <created>1585395635039</created>
@@ -316,11 +340,29 @@
       <option name="project" value="LOCAL" />
       <updated>1586763458805</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="介绍">
+      <created>1592386339486</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1592386339486</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="添加全局索引map和Bucket管理者" />
@@ -337,7 +379,8 @@
     <MESSAGE value="Bucket迭代器修改" />
     <MESSAGE value="多线程优化day2" />
     <MESSAGE value="project rename" />
-    <option name="LAST_COMMIT_MESSAGE" value="project rename" />
+    <MESSAGE value="介绍" />
+    <option name="LAST_COMMIT_MESSAGE" value="介绍" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1023" y="430" key="#Custom_Plugin_Repositories" timestamp="1586936301417">
@@ -388,22 +431,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585985493994" />
-    <state width="1877" height="155" key="GridCell.Tab.0.bottom" timestamp="1586784641749">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1878" height="259" key="GridCell.Tab.0.bottom" timestamp="1592387693855">
+      <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state width="1877" height="155" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586784641749" />
-    <state width="1877" height="155" key="GridCell.Tab.0.center" timestamp="1586784641749">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1878" height="259" key="GridCell.Tab.0.bottom/0.23.1920.977@0.23.1920.977" timestamp="1592387693855" />
+    <state width="1878" height="259" key="GridCell.Tab.0.center" timestamp="1592387693854">
+      <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state width="1877" height="155" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586784641749" />
-    <state width="1877" height="155" key="GridCell.Tab.0.left" timestamp="1586784641749">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1878" height="259" key="GridCell.Tab.0.center/0.23.1920.977@0.23.1920.977" timestamp="1592387693854" />
+    <state width="1878" height="259" key="GridCell.Tab.0.left" timestamp="1592387693854">
+      <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state width="1877" height="155" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586784641749" />
-    <state width="1877" height="155" key="GridCell.Tab.0.right" timestamp="1586784641749">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1878" height="259" key="GridCell.Tab.0.left/0.23.1920.977@0.23.1920.977" timestamp="1592387693854" />
+    <state width="1878" height="259" key="GridCell.Tab.0.right" timestamp="1592387693854">
+      <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state width="1877" height="155" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586784641749" />
+    <state width="1878" height="259" key="GridCell.Tab.0.right/0.23.1920.977@0.23.1920.977" timestamp="1592387693854" />
     <state width="1877" height="116" key="GridCell.Tab.1.bottom" timestamp="1586525917856">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -432,10 +479,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1585565797955" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1586763466175">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="552" y="261" key="Vcs.Push.Dialog.v2" timestamp="1592386350065">
+      <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586763466175" />
+    <state x="552" y="261" key="Vcs.Push.Dialog.v2/0.23.1920.977@0.23.1920.977" timestamp="1592386350065" />
     <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1586933020292">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -448,10 +496,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="273" key="extract.method.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585483723569" />
-    <state x="567" y="70" width="786" height="900" key="find.popup" timestamp="1586763338485">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="567" y="89" width="786" height="846" key="find.popup" timestamp="1592386779615">
+      <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="567" y="70" width="786" height="900" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586763338485" />
+    <state x="567" y="89" width="786" height="846" key="find.popup/0.23.1920.977@0.23.1920.977" timestamp="1592386779615" />
     <state x="675" y="311" key="git4idea.merge.GitPullDialog" timestamp="1585650574015">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -460,10 +509,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="334" y="215" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1586339719855" />
-    <state x="661" y="137" key="refactoring.ChangeSignatureDialog" timestamp="1585645776635">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="661" y="152" key="refactoring.ChangeSignatureDialog" timestamp="1592387867581">
+      <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="661" y="137" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585645776635" />
+    <state x="661" y="152" key="refactoring.ChangeSignatureDialog/0.23.1920.977@0.23.1920.977" timestamp="1592387867580" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1586337035046">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

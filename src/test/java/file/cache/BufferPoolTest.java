@@ -39,7 +39,7 @@ public class BufferPoolTest {
     public void append(){
         File file = new File(".//test.txt");
         byte[] a = new byte[]{'s', 'e', 'i'};
-        FileUtil.writeTail(file, a);
+        FileUtil.writeTail(file.toPath(), a);
     }
 
     @Test

@@ -5,6 +5,10 @@ import core.constant.FileConstEnum;
 import config.GlobalConstant;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 
 public final class FileUtil {
     //TODO: logger
@@ -63,8 +67,9 @@ public final class FileUtil {
         return true;
     }
 
-    public static void writeTail(File file, byte[] bytes){
-        try(OutputStream os = new FileOutputStream(file, true)){
+    public static void writeTail(Path file, byte[] bytes){
+
+        try(OutputStream os = Files.newOutputStream(file, StandardOpenOption.APPEND)){
             os.write(bytes);
             os.flush();
         }
@@ -74,16 +79,16 @@ public final class FileUtil {
     }
     //</editor-fold>
 
-    public static File getFile(int id, FileConstEnum type){
-        return new File(fileName(id, type));
+    public static Path getPath(int id, FileConstEnum type){
+        return Paths.get(fileName(id, type));
     }
 
-    public static File getFile(int id){
-        return new File(fileName(id, FileConstEnum.BUCKET_PREFIX));
+    public static Path getPath(int id){
+        return Paths.get(fileName(id, FileConstEnum.BUCKET_PREFIX));
     }
 
-    public static File getSimpleBufferFile(){
-        return new File(GlobalConstant.FILE_DIR+ GlobalConstant.CACHE_FILE_NAME);
+    public static Path getSimpleBufferPath(){
+        return Paths.get(GlobalConstant.FILE_DIR+ GlobalConstant.CACHE_FILE_NAME);
     }
 
     private static String fileName(int id, FileConstEnum type){

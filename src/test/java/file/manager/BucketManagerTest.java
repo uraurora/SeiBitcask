@@ -8,13 +8,10 @@ import file.entity.IndexEntry;
 import org.junit.Test;
 import util.FileUtil;
 
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Arrays;
-
-import static org.junit.Assert.*;
 
 public class BucketManagerTest {
 
@@ -33,7 +30,7 @@ public class BucketManagerTest {
 
     @Test
     public void readBucket() {
-        System.out.println(FileUtil.getFile(0).length());
+        // System.out.println(FileUtil.getPath(0));
         IndexEntry e = IndexEntry.builder()
                 .setTstamp(LocalDateTime.now().toEpochSecond(ZoneOffset.of("+8")))
                 .setBucketId(0)
@@ -47,7 +44,7 @@ public class BucketManagerTest {
 
     @Test
     public void bucketTest(){
-        Bucket b = Bucket.newInstance(FileUtil.getFile(3));
+        Bucket b = Bucket.newInstance(FileUtil.getPath(3));
         for (BucketEntryDto e : b) {
             System.out.println(e);
         }

@@ -10,6 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.file.Files;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -61,7 +62,7 @@ public class BucketBuffer {
             writeLock.lock();
             try {
                 if (simpleBuffer == null) {
-                    try(RandomAccessFile raf = new RandomAccessFile(FileUtil.getSimpleBufferFile(), "rw")){
+                    try(RandomAccessFile raf = new RandomAccessFile(FileUtil.getSimpleBufferPath().toFile(), "rw")){
                         simpleBuffer = raf
                                 .getChannel()
                                 .map(FileChannel.MapMode.READ_WRITE, 0, Integer.BYTES);

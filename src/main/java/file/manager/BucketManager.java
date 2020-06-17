@@ -10,6 +10,9 @@ import file.entity.IndexEntry;
 import util.FileUtil;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -48,19 +51,20 @@ public class BucketManager implements IBucketManager {
      */
     @Override
     public void writeBucket(@NotNull BucketEntry entry){
-        File target;
+        Path target;
         final long offset;
         writeLock.lock();
         try {
-            target = FileUtil.getFile(buffer.getActiveBucketId());
-            offset = target.length();
+            target = FileUtil.getPath(buffer.getActiveBucketId());
+            offset = Files.size(target);
             if(offset > GlobalConstant.BUCKET_MAX_SIZE - entry.size()){
                 // 新建bucket文件
-                target = FileUtil.getFile(buffer.idIncrementAndGet());
+                target = FileUtil.getPath(buffer.idIncrementAndGet());
             }
             Bucket.newInstance(target).write(entry);
-        }
-        finally {
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
             writeLock.unlock();
         }
     }
@@ -72,14 +76,14 @@ public class BucketManager implements IBucketManager {
      */
     @Override
     public byte[] readBucket(@NotNull IndexEntry indexEntry){
-        File target;
+        Path target;
         byte[] res;
         // TODO:cache
         // buffer read
         // if(indexEntry.getBucketId() == )
         readLock.lock();
         try {
-            target = FileUtil.getFile(indexEntry.getBucketId(), FileConstEnum.BUCKET_PREFIX);
+            target = FileUtil.getPath(indexEntry.getBucketId(), FileConstEnum.BUCKET_PREFIX);
             res = Bucket.newInstance(target).read(indexEntry);
         } finally {
             readLock.unlock();
@@ -90,12 +94,13 @@ public class BucketManager implements IBucketManager {
 
     @Override
     public long bucketSize(int id){
-        long res;
+        long res = 0;
         readLock.lock();
         try{
-            res = FileUtil.getFile(id).length();
-        }
-        finally {
+            res = Files.size(FileUtil.getPath(id));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
             readLock.unlock();
         }
         return res;
