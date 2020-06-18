@@ -24,12 +24,11 @@
   <component name="ChangeListManager">
     <list default="true" id="89d9ced8-492c-4467-a919-d6b98f8317b7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/config/GlobalConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/GlobalConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/core/db/Bitcask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/db/Bitcask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/file/entity/Bucket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/entity/Bucket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/file/manager/BucketManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/manager/BucketManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/FileUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/file/cache/BufferPoolTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/file/cache/BufferPoolTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/file/manager/BucketManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/file/manager/BucketManagerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/file/manager/IBucketManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/manager/IBucketManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -233,7 +232,8 @@
       <workItem from="1586936437805" duration="115000" />
       <workItem from="1586936562379" duration="2413000" />
       <workItem from="1590649422659" duration="2129000" />
-      <workItem from="1592384723213" duration="7030000" />
+      <workItem from="1592384723213" duration="7500000" />
+      <workItem from="1592445051581" duration="9486000" />
     </task>
     <task id="LOCAL-00001" summary="添加全局索引map和Bucket管理者">
       <created>1585395635039</created>
@@ -354,7 +354,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592388320638</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="使用Files静态工具类取代部分自写类">
+      <created>1592398864013</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1592398864013</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,6 +377,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="添加全局索引map和Bucket管理者" />
@@ -388,17 +396,22 @@
     <MESSAGE value="project rename" />
     <MESSAGE value="介绍" />
     <MESSAGE value="修改File为Path" />
-    <option name="LAST_COMMIT_MESSAGE" value="修改File为Path" />
+    <MESSAGE value="使用Files静态工具类取代部分自写类" />
+    <option name="LAST_COMMIT_MESSAGE" value="使用Files静态工具类取代部分自写类" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="539" y="80" key="#BitcaskTest.get" timestamp="1592398777003">
+      <screen x="0" y="23" width="1920" height="977" />
+    </state>
+    <state x="539" y="80" key="#BitcaskTest.get/0.23.1920.977@0.23.1920.977" timestamp="1592398777003" />
     <state x="539" y="80" key="#BitcaskTest.put" timestamp="1592398586547">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="539" y="80" key="#BitcaskTest.put/0.23.1920.977@0.23.1920.977" timestamp="1592398586547" />
-    <state x="539" y="80" key="#BucketManagerTest.bucketTest" timestamp="1592398392001">
+    <state x="539" y="80" key="#BucketManagerTest.bucketTest" timestamp="1592398798364">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
-    <state x="539" y="80" key="#BucketManagerTest.bucketTest/0.23.1920.977@0.23.1920.977" timestamp="1592398392001" />
+    <state x="539" y="80" key="#BucketManagerTest.bucketTest/0.23.1920.977@0.23.1920.977" timestamp="1592398798364" />
     <state x="539" y="80" key="#BucketManagerTest.readBucket" timestamp="1592397499991">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
@@ -427,10 +440,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="676" y="373" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585386590209" />
-    <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser" timestamp="1586603605910">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="765" y="231" key="#com.intellij.ide.util.MemberChooser" timestamp="1592478766141">
+      <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1586603605910" />
+    <state x="765" y="231" key="#com.intellij.ide.util.MemberChooser/0.23.1920.977@0.23.1920.977" timestamp="1592478766141" />
     <state x="640" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1586933037900">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -459,26 +473,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585985493994" />
-    <state width="1878" height="214" key="GridCell.Tab.0.bottom" timestamp="1592398394992">
+    <state width="1878" height="100" key="GridCell.Tab.0.bottom" timestamp="1592399059317">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state width="1877" height="155" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586784641749" />
-    <state width="1878" height="214" key="GridCell.Tab.0.bottom/0.23.1920.977@0.23.1920.977" timestamp="1592398394992" />
-    <state width="1878" height="214" key="GridCell.Tab.0.center" timestamp="1592398394991">
+    <state width="1878" height="100" key="GridCell.Tab.0.bottom/0.23.1920.977@0.23.1920.977" timestamp="1592399059317" />
+    <state width="1878" height="100" key="GridCell.Tab.0.center" timestamp="1592399059317">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state width="1877" height="155" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586784641749" />
-    <state width="1878" height="214" key="GridCell.Tab.0.center/0.23.1920.977@0.23.1920.977" timestamp="1592398394991" />
-    <state width="1878" height="214" key="GridCell.Tab.0.left" timestamp="1592398394990">
+    <state width="1878" height="100" key="GridCell.Tab.0.center/0.23.1920.977@0.23.1920.977" timestamp="1592399059317" />
+    <state width="1878" height="100" key="GridCell.Tab.0.left" timestamp="1592399059317">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state width="1877" height="155" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586784641749" />
-    <state width="1878" height="214" key="GridCell.Tab.0.left/0.23.1920.977@0.23.1920.977" timestamp="1592398394990" />
-    <state width="1878" height="214" key="GridCell.Tab.0.right" timestamp="1592398394991">
+    <state width="1878" height="100" key="GridCell.Tab.0.left/0.23.1920.977@0.23.1920.977" timestamp="1592399059317" />
+    <state width="1878" height="100" key="GridCell.Tab.0.right" timestamp="1592399059317">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state width="1877" height="155" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586784641749" />
-    <state width="1878" height="214" key="GridCell.Tab.0.right/0.23.1920.977@0.23.1920.977" timestamp="1592398394991" />
+    <state width="1878" height="100" key="GridCell.Tab.0.right/0.23.1920.977@0.23.1920.977" timestamp="1592399059317" />
     <state width="1877" height="116" key="GridCell.Tab.1.bottom" timestamp="1586525917856">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -507,11 +521,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1585565797955" />
-    <state x="552" y="261" key="Vcs.Push.Dialog.v2" timestamp="1592388330265">
+    <state x="552" y="261" key="Vcs.Push.Dialog.v2" timestamp="1592398879477">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586763466175" />
-    <state x="552" y="261" key="Vcs.Push.Dialog.v2/0.23.1920.977@0.23.1920.977" timestamp="1592388330265" />
+    <state x="552" y="261" key="Vcs.Push.Dialog.v2/0.23.1920.977@0.23.1920.977" timestamp="1592398879477" />
     <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1586933020292">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -546,10 +560,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586337035046" />
-    <state x="623" y="234" width="672" height="637" key="search.everywhere.popup" timestamp="1592388307501">
+    <state x="623" y="234" width="672" height="637" key="search.everywhere.popup" timestamp="1592486489039">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586511748633" />
-    <state x="623" y="234" width="672" height="637" key="search.everywhere.popup/0.23.1920.977@0.23.1920.977" timestamp="1592388307501" />
+    <state x="623" y="234" width="672" height="637" key="search.everywhere.popup/0.23.1920.977@0.23.1920.977" timestamp="1592486489039" />
   </component>
 </project>

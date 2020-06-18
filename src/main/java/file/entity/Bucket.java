@@ -33,6 +33,10 @@ public class Bucket implements Iterable<BucketEntryDto>{
         return FileUtil.read(path.toFile(), indexEntry.getOffset() - indexEntry.getValueSize(), indexEntry.getValueSize());
     }
 
+    public long size() throws IOException {
+        return Files.size(path);
+    }
+
     @Override
     public Iterator<BucketEntryDto> iterator() {
         Iterator<BucketEntryDto> res = null;

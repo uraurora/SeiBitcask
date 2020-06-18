@@ -1,7 +1,9 @@
 package core.db;
 
+import config.GlobalConstant;
 import core.constant.EntrySizeEnum;
 import file.cache.BucketBuffer;
+import file.entity.Bucket;
 import file.entity.BucketEntry;
 import file.entity.IndexEntry;
 import file.manager.BucketManager;
@@ -10,6 +12,9 @@ import file.manager.IIndexMap;
 import core.constant.BucketSerializeCategory;
 import file.manager.IndexMap;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Objects;
@@ -29,7 +34,7 @@ public class Bitcask implements IBitcask {
     private final BucketSerializeCategory category;
 
     public Bitcask(IIndexMap<String, IndexEntry> indexMap, BucketSerializeCategory category) {
-        this.bucketManager = BucketManager.newInstance(BucketBuffer.newInstance());
+        this.bucketManager = BucketManager.newInstance();
         this.indexMap = indexMap;
         this.category = category;
     }
@@ -61,7 +66,7 @@ public class Bitcask implements IBitcask {
                 .build();
 
         // write the entry to buffer/file
-        bucketManager.writeBucket(bucketEntry);
+        bucketManager.write(bucketEntry);
 
         // update the indexMap
         int id = bucketManager.getActiveBucketId();
@@ -102,7 +107,7 @@ public class Bitcask implements IBitcask {
         if(indexMap.isExisted(key)){
             IndexEntry indexEntry = indexMap.get(key);
             // read from buffer, aim to find the val
-            res = category.deserialize(bucketManager.readBucket(indexEntry));
+            res = category.deserialize(bucketManager.read(indexEntry));
         }
         return Optional.ofNullable(res);
     }
@@ -113,5 +118,6 @@ public class Bitcask implements IBitcask {
         }
         return obj;
     }
+
 
 }
