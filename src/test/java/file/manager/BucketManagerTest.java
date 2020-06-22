@@ -16,7 +16,7 @@ import java.util.Arrays;
 
 public class BucketManagerTest {
 
-    BucketManager bucketManager = BucketManager.newInstance(BucketBuffer.newInstance());
+    BucketManager bucketManager = BucketManager.newInstance("123", BucketBuffer.newInstance());
 
     @Test
     public void writeBucket() {
@@ -26,7 +26,7 @@ public class BucketManagerTest {
                 .build();
         System.out.println("key2".getBytes().length);
         System.out.println("how can things be so terrible?".getBytes().length);
-        bucketManager.writeBucket(e);
+        bucketManager.write(e);
     }
 
     @Test
@@ -38,7 +38,7 @@ public class BucketManagerTest {
                 .setValueSize(30)
                 .setOffset(198)
                 .build();
-        byte[] bytes = bucketManager.readBucket(e);
+        byte[] bytes = bucketManager.read(e);
         System.out.println(Arrays.toString(bytes));
         System.out.println(new String(bytes, StandardCharsets.UTF_8));
     }
@@ -46,7 +46,7 @@ public class BucketManagerTest {
     @Test
     public void bucketTest() throws IOException {
         Bucket b = Bucket.newInstance(FileUtil.getPath(0));
-        for (BucketEntryDto e : b) {
+        for (BucketEntryDto e : b.asList()) {
             System.out.println(e);
         }
     }

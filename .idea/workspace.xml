@@ -23,12 +23,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="89d9ced8-492c-4467-a919-d6b98f8317b7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/core/db/BitcaskFactory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/task/merge/AbstractMergeTemplate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/task/merge/CapacityMergeStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/task/merge/IMergeTemplate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/task/merge/TimeMergeStrategy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j/log4j.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/core/db/Bitcask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/core/db/Bitcask.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/file/entity/Bucket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/entity/Bucket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/file/entity/BucketEntry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/entity/BucketEntry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/file/manager/BucketManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/manager/BucketManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/file/manager/IBucketManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/file/manager/IBucketManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/task/merge/IMergeStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/task/merge/IMergeStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/task/merge/mergeTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/task/merge/mergeTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/core/db/BitcaskTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/core/db/BitcaskTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/file/manager/BucketManagerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/file/manager/BucketManagerTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,9 +50,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
-        <option value="Interface" />
         <option value="JUnit4 Test Class" />
         <option value="Class" />
+        <option value="Interface" />
+        <option value="Tag Library Descriptor" />
       </list>
     </option>
   </component>
@@ -92,12 +104,14 @@
       <recent name="" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/log4j" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="F:\project\plainKVDB\src\main\resources" />
       <recent name="F:\project\plainKVDB\src" />
       <recent name="F:\project\plainKVDB" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.BucketManagerTest.bucketTest">
+  <component name="RunManager" selected="JUnit.BitcaskTest.put">
     <configuration name="BitcaskTest.get" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SeiBitcask" />
       <extension name="coverage">
@@ -181,9 +195,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.BucketManagerTest.bucketTest" />
-        <item itemvalue="JUnit.BitcaskTest.get" />
         <item itemvalue="JUnit.BitcaskTest.put" />
+        <item itemvalue="JUnit.BitcaskTest.get" />
+        <item itemvalue="JUnit.BucketManagerTest.bucketTest" />
         <item itemvalue="JUnit.BucketManagerTest.readBucket" />
         <item itemvalue="JUnit.BucketManagerTest.writeBucket" />
       </list>
@@ -233,7 +247,10 @@
       <workItem from="1586936562379" duration="2413000" />
       <workItem from="1590649422659" duration="2129000" />
       <workItem from="1592384723213" duration="7500000" />
-      <workItem from="1592445051581" duration="9486000" />
+      <workItem from="1592445051581" duration="28429000" />
+      <workItem from="1592790050669" duration="509000" />
+      <workItem from="1592791631194" duration="11000" />
+      <workItem from="1592791677153" duration="2308000" />
     </task>
     <task id="LOCAL-00001" summary="添加全局索引map和Bucket管理者">
       <created>1585395635039</created>
@@ -361,7 +378,14 @@
       <option name="project" value="LOCAL" />
       <updated>1592398864013</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="BucketManager增加Bucket的实例缓存">
+      <created>1592486825407</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1592486825407</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,17 +421,18 @@
     <MESSAGE value="介绍" />
     <MESSAGE value="修改File为Path" />
     <MESSAGE value="使用Files静态工具类取代部分自写类" />
-    <option name="LAST_COMMIT_MESSAGE" value="使用Files静态工具类取代部分自写类" />
+    <MESSAGE value="BucketManager增加Bucket的实例缓存" />
+    <option name="LAST_COMMIT_MESSAGE" value="BucketManager增加Bucket的实例缓存" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="539" y="80" key="#BitcaskTest.get" timestamp="1592398777003">
+    <state x="539" y="80" key="#BitcaskTest.get" timestamp="1592568114659">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
-    <state x="539" y="80" key="#BitcaskTest.get/0.23.1920.977@0.23.1920.977" timestamp="1592398777003" />
-    <state x="539" y="80" key="#BitcaskTest.put" timestamp="1592398586547">
+    <state x="539" y="80" key="#BitcaskTest.get/0.23.1920.977@0.23.1920.977" timestamp="1592568114659" />
+    <state x="539" y="80" key="#BitcaskTest.put" timestamp="1592568653827">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
-    <state x="539" y="80" key="#BitcaskTest.put/0.23.1920.977@0.23.1920.977" timestamp="1592398586547" />
+    <state x="539" y="80" key="#BitcaskTest.put/0.23.1920.977@0.23.1920.977" timestamp="1592568653827" />
     <state x="539" y="80" key="#BucketManagerTest.bucketTest" timestamp="1592398798364">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
@@ -440,11 +465,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="676" y="373" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585386590209" />
-    <state x="765" y="231" key="#com.intellij.ide.util.MemberChooser" timestamp="1592478766141">
+    <state x="679" y="311" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1592566329017">
+      <screen x="0" y="23" width="1920" height="977" />
+    </state>
+    <state x="679" y="311" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1920.977@0.23.1920.977" timestamp="1592566329017" />
+    <state x="765" y="231" key="#com.intellij.ide.util.MemberChooser" timestamp="1592569247143">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="765" y="221" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1586603605910" />
-    <state x="765" y="231" key="#com.intellij.ide.util.MemberChooser/0.23.1920.977@0.23.1920.977" timestamp="1592478766141" />
+    <state x="765" y="231" key="#com.intellij.ide.util.MemberChooser/0.23.1920.977@0.23.1920.977" timestamp="1592569247143" />
     <state x="640" y="255" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1586933037900">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -457,10 +486,15 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="739" y="378" width="447" height="292" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1920.1040@0.0.1920.1040" timestamp="1586938140893" />
-    <state x="420" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586602949060">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="719" y="351" key="#com.intellij.refactoring.move.moveInner.MoveInnerDialog" timestamp="1592539007240">
+      <screen x="0" y="23" width="1920" height="977" />
+    </state>
+    <state x="719" y="351" key="#com.intellij.refactoring.move.moveInner.MoveInnerDialog/0.23.1920.977@0.23.1920.977" timestamp="1592539007240" />
+    <state x="420" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1592547029993">
+      <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="420" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586602949060" />
+    <state x="420" y="23" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.23.1920.977@0.23.1920.977" timestamp="1592547029993" />
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1586602919874">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -473,26 +507,26 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585985493994" />
-    <state width="1878" height="100" key="GridCell.Tab.0.bottom" timestamp="1592399059317">
+    <state width="1878" height="186" key="GridCell.Tab.0.bottom" timestamp="1592569417846">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state width="1877" height="155" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586784641749" />
-    <state width="1878" height="100" key="GridCell.Tab.0.bottom/0.23.1920.977@0.23.1920.977" timestamp="1592399059317" />
-    <state width="1878" height="100" key="GridCell.Tab.0.center" timestamp="1592399059317">
+    <state width="1878" height="186" key="GridCell.Tab.0.bottom/0.23.1920.977@0.23.1920.977" timestamp="1592569417846" />
+    <state width="1878" height="186" key="GridCell.Tab.0.center" timestamp="1592569417846">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state width="1877" height="155" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586784641749" />
-    <state width="1878" height="100" key="GridCell.Tab.0.center/0.23.1920.977@0.23.1920.977" timestamp="1592399059317" />
-    <state width="1878" height="100" key="GridCell.Tab.0.left" timestamp="1592399059317">
+    <state width="1878" height="186" key="GridCell.Tab.0.center/0.23.1920.977@0.23.1920.977" timestamp="1592569417846" />
+    <state width="1878" height="186" key="GridCell.Tab.0.left" timestamp="1592569417846">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state width="1877" height="155" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586784641749" />
-    <state width="1878" height="100" key="GridCell.Tab.0.left/0.23.1920.977@0.23.1920.977" timestamp="1592399059317" />
-    <state width="1878" height="100" key="GridCell.Tab.0.right" timestamp="1592399059317">
+    <state width="1878" height="186" key="GridCell.Tab.0.left/0.23.1920.977@0.23.1920.977" timestamp="1592569417846" />
+    <state width="1878" height="186" key="GridCell.Tab.0.right" timestamp="1592569417846">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state width="1877" height="155" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586784641749" />
-    <state width="1878" height="100" key="GridCell.Tab.0.right/0.23.1920.977@0.23.1920.977" timestamp="1592399059317" />
+    <state width="1878" height="186" key="GridCell.Tab.0.right/0.23.1920.977@0.23.1920.977" timestamp="1592569417846" />
     <state width="1877" height="116" key="GridCell.Tab.1.bottom" timestamp="1586525917856">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -517,15 +551,16 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="282" y="257" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586936553251" />
-    <state width="498" height="446" key="SwitcherDM" timestamp="1585565797955">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="500" height="419" key="SwitcherDM" timestamp="1592568552088">
+      <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1920.1040@0.0.1920.1040" timestamp="1585565797955" />
-    <state x="552" y="261" key="Vcs.Push.Dialog.v2" timestamp="1592398879477">
+    <state width="500" height="419" key="SwitcherDM/0.23.1920.977@0.23.1920.977" timestamp="1592568552088" />
+    <state x="552" y="261" key="Vcs.Push.Dialog.v2" timestamp="1592486834557">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586763466175" />
-    <state x="552" y="261" key="Vcs.Push.Dialog.v2/0.23.1920.977@0.23.1920.977" timestamp="1592398879477" />
+    <state x="552" y="261" key="Vcs.Push.Dialog.v2/0.23.1920.977@0.23.1920.977" timestamp="1592486834557" />
     <state x="640" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1586933020292">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -551,19 +586,19 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="334" y="215" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1586339719855" />
-    <state x="661" y="152" key="refactoring.ChangeSignatureDialog" timestamp="1592387867581">
+    <state x="661" y="152" key="refactoring.ChangeSignatureDialog" timestamp="1592567304863">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="661" y="137" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585645776635" />
-    <state x="661" y="152" key="refactoring.ChangeSignatureDialog/0.23.1920.977@0.23.1920.977" timestamp="1592387867580" />
+    <state x="661" y="152" key="refactoring.ChangeSignatureDialog/0.23.1920.977@0.23.1920.977" timestamp="1592567304863" />
     <state x="616" y="240" key="run.anything.popup" timestamp="1586337035046">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586337035046" />
-    <state x="623" y="234" width="672" height="637" key="search.everywhere.popup" timestamp="1592486489039">
+    <state x="623" y="234" width="672" height="637" key="search.everywhere.popup" timestamp="1592558775466">
       <screen x="0" y="23" width="1920" height="977" />
     </state>
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1586511748633" />
-    <state x="623" y="234" width="672" height="637" key="search.everywhere.popup/0.23.1920.977@0.23.1920.977" timestamp="1592486489039" />
+    <state x="623" y="234" width="672" height="637" key="search.everywhere.popup/0.23.1920.977@0.23.1920.977" timestamp="1592558775466" />
   </component>
 </project>

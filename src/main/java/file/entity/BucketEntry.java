@@ -11,7 +11,7 @@ import java.util.Objects;
  * @description Bucket存储的条目实体类，建造者模式
  * @date 17:13 2020/3/28
  */
-public class BucketEntry {
+public class BucketEntry implements Comparable<BucketEntry> {
     /**
      * 时间戳
      */
@@ -39,6 +39,18 @@ public class BucketEntry {
         valueSize = builder.valueSize;
         key = builder.key;
         value = builder.value;
+    }
+
+    @Override
+    public int compareTo(BucketEntry o) {
+        long res = this.tstamp - o.tstamp;
+        if(res > 0){
+            return 1;
+        }else if(res == 0){
+            return 0;
+        }else{
+            return -1;
+        }
     }
 
     public static class BucketEntryBuilder {

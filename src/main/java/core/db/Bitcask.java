@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
 
 /**
  * @author sei
@@ -27,6 +28,8 @@ import java.util.Optional;
  */
 public class Bitcask implements IBitcask {
 
+    private final String id;
+
     private final IBucketManager bucketManager;
 
     private final IIndexMap<String, IndexEntry> indexMap;
@@ -34,17 +37,10 @@ public class Bitcask implements IBitcask {
     private final BucketSerializeCategory category;
 
     public Bitcask(IIndexMap<String, IndexEntry> indexMap, BucketSerializeCategory category) {
-        this.bucketManager = BucketManager.newInstance();
+        this.id = UUID.randomUUID().toString();
+        this.bucketManager = BucketManager.newInstance(this.id, BucketBuffer.newInstance());
         this.indexMap = indexMap;
         this.category = category;
-    }
-
-    public static Bitcask newInstance(){
-        return new Bitcask(IndexMap.getInstance(), BucketSerializeCategory.DEFAULT);
-    }
-
-    public static Bitcask newInstance(IIndexMap<String, IndexEntry> indexMap){
-        return new Bitcask(indexMap, BucketSerializeCategory.DEFAULT);
     }
 
     /**
@@ -73,7 +69,7 @@ public class Bitcask implements IBitcask {
         IndexEntry indexEntry = IndexEntry.builder()
                 .setTstamp(tstamp)
                 .setBucketId(id)
-                .setOffset(bucketManager.bucketSize(id))
+                .setOffset(bucketManager.getBucket(id).size())
                 .setValueSize(bucketEntry.getValueSize())
                 .build();
         indexMap.put(key, indexEntry);

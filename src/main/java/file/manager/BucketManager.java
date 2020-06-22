@@ -1,10 +1,12 @@
 package file.manager;
 
-import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+import com.google.common.collect.Lists;
 import com.sun.istack.internal.NotNull;
+import com.sun.org.slf4j.internal.Logger;
+import com.sun.org.slf4j.internal.LoggerFactory;
 import core.constant.FileConstEnum;
 import config.GlobalConstant;
 import file.cache.BucketBuffer;
@@ -13,12 +15,10 @@ import file.entity.BucketEntry;
 import file.entity.IndexEntry;
 import util.FileUtil;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
@@ -35,15 +35,19 @@ public class BucketManager implements IBucketManager {
      * insert, delete, update, select
      * 实现键值的增删改查，其中增改是一样的实现，删需要处理一下BucketEntry，查一是文件的查，二是缓存查
      */
+    private final Logger logger = LoggerFactory.getLogger(BucketManager.class);
+
+    private final String bitcaskId;
 
     private final BucketBuffer buffer;
 
-    private BucketManager(BucketBuffer buffer) {
+    private BucketManager(String bitcaskId, BucketBuffer buffer) {
+        this.bitcaskId = bitcaskId;
         this.buffer = buffer;
     }
 
-    public static BucketManager newInstance(){
-        return new BucketManager(BucketBuffer.newInstance());
+    public static BucketManager newInstance(String id, BucketBuffer buffer){
+        return new BucketManager(id, buffer);
     }
 
     private final ReadWriteLock lock = new ReentrantReadWriteLock();
@@ -79,9 +83,10 @@ public class BucketManager implements IBucketManager {
             // 获取旧bucket或者新建bucket写文件
             bucketCache.get(path).write(entry);
         } catch (IOException | ExecutionException e) {
-            e.printStackTrace();
+            logger.error("bitcaskId : " + bitcaskId + ", write error ");
         } finally {
             writeLock.unlock();
+            logger.trace("bitcaskId : " + bitcaskId + ", write successful ");
         }
     }
 
@@ -102,7 +107,7 @@ public class BucketManager implements IBucketManager {
             path = FileUtil.getPath(indexEntry.getBucketId(), FileConstEnum.BUCKET_PREFIX);
             res = bucketCache.get(path).read(indexEntry);
         } catch (IOException | ExecutionException e) {
-            e.printStackTrace();
+            logger.error("bitcaskId : " + bitcaskId + ", read error ");
         } finally {
             readLock.unlock();
         }
@@ -115,11 +120,49 @@ public class BucketManager implements IBucketManager {
         try {
             res = bucketCache.get(FileUtil.getPath(id));
         } catch (ExecutionException | IOException e) {
-            e.printStackTrace();
+            logger.error("cannot create Bucket or get instance");
         }
         return res;
     }
+
+    @Override
+    public boolean newBucket() {
+        getBucket(buffer.idIncrementAndGet());
+        return true;
+    }
+
+    @Override
+    public boolean removeBucket(int id) {
+        try {
+            return removeBucket(FileUtil.getPath(id));
+        } catch (IOException e) {
+            logger.warn("bitcaskId : " + bitcaskId + ", remove bucket failed : " + id);
+            return false;
+        }
+    }
+
+    @Override
+    public boolean removeBucket(Path path) {
+        try {
+            Files.deleteIfExists(path);
+            return true;
+        } catch (IOException e) {
+            logger.warn("bitcaskId : " + bitcaskId + ", remove bucket failed : " + path);
+            return false;
+        }
+    }
     //</editor-fold>
+
+    /**
+     * 找到这个bitcask实例下所有的buckets
+     * @return
+     */
+    public List<Bucket> getBuckets(){
+        List<Bucket> res = Lists.newArrayList();
+        // TODO:文件夹位置
+        // 先得到该bucketManager管理的文件夹path，之后遍历文件返回
+        return res;
+    }
 
     @Override
     public long bucketSize(int id){
@@ -128,7 +171,7 @@ public class BucketManager implements IBucketManager {
         try{
             res = Files.size(FileUtil.getPath(id));
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.warn("bitcaskId : " + bitcaskId + ", cannot get size of bucket " + id);
         } finally {
             readLock.unlock();
         }

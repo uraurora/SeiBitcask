@@ -4,7 +4,7 @@ import org.junit.Test;
 
 public class BitcaskTest {
 
-    Bitcask bitcask = Bitcask.newInstance();
+    Bitcask bitcask = BitcaskFactory.newInstance();
 
     @Test
     public void put() {
